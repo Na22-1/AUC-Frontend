@@ -5,7 +5,9 @@ let ws = new WebSocket('ws://AUC-Web-env.eba-kfh4ewj6.eu-north-1.elasticbeanstal
 ws.onmessage = message => {
     load();
 }
-
+ws.onerror = function(error) {
+    console.error('WebSocket error:', error);
+};
 function onClick() {
     ws.send("Update!")
 }
