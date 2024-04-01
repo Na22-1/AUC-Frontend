@@ -2,7 +2,7 @@
 const insertData = (data, canvasBoxId) => {
     return new Promise((resolve, reject) => {
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "http://AUC-Web-env.eba-kfh4ewj6.eu-north-1.elasticbeanstalk.com/api/idea", true);
+        xhr.open("POST", "https://Web-AUC-env.eba-zkudmtnj.eu-central-1.elasticbeanstalk.com/api/idea", true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
@@ -26,7 +26,7 @@ const insertData = (data, canvasBoxId) => {
 const updateData = (data, canvasBoxId, itemId) => {
     return new Promise((resolve, reject) => {
         var xhr = new XMLHttpRequest();
-        xhr.open("PUT", `http://AUC-Web-env.eba-kfh4ewj6.eu-north-1.elasticbeanstalk.com/api/idea/${itemId}`, true); // Using PUT method for update
+        xhr.open("PUT", `https://Web-AUC-env.eba-zkudmtnj.eu-central-1.elasticbeanstalk.com/api/idea/${itemId}`, true); // Using PUT method for update
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
@@ -50,7 +50,7 @@ const updateData = (data, canvasBoxId, itemId) => {
 
 const getData = (callback) => {
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://AUC-Web-env.eba-kfh4ewj6.eu-north-1.elasticbeanstalk.com/api/idea", true);
+    xhr.open("GET", "https://Web-AUC-env.eba-zkudmtnj.eu-central-1.elasticbeanstalk.com/api/idea", true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -66,7 +66,7 @@ const getData = (callback) => {
 const deleteData = (id) => {
     return new Promise((resolve, reject) => {
         var xhr = new XMLHttpRequest();
-        xhr.open("DELETE", `http://AUC-Web-env.eba-kfh4ewj6.eu-north-1.elasticbeanstalk.com/api/idea/${id}`, true);
+        xhr.open("DELETE", `https://Web-AUC-env.eba-zkudmtnj.eu-central-1.elasticbeanstalk.com/api/idea/${id}`, true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
