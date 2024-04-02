@@ -1,6 +1,6 @@
 import {load} from './script.js'
 
-let ws = new WebSocket('wss://AUC-Web-env.eba-kfh4ewj6.eu-north-1.elasticbeanstalk.com/user');
+let ws = new WebSocket('wss://auc-web.onrender.com/user');
 
 ws.onmessage = message => {
     load();
