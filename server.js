@@ -1,8 +1,30 @@
+// const express = require('express');
+// const app = express();
+//
+// // Add CORS middleware
+// app.use((req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', 'https://auc-masterarbeit.onrender.com');
+//     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//     next();
+// });
+//
+// // Your route handlers
+// app.get('/api/idea', (req, res) => {
+//     // Your code to handle the request
+// });
+//
+// // Start the server
+// app.listen(3000, () => {
+//     console.log('Server is running on port 3000');
+// });
+//
+
 
 const insertData = (data, canvasBoxId) => {
     return new Promise((resolve, reject) => {
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "https://auc-web.onrender.com/api/idea", true);
+        xhr.open("POST", "https://auc-web-q448.onrender.com/api/idea", true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
@@ -26,7 +48,7 @@ const insertData = (data, canvasBoxId) => {
 const updateData = (data, canvasBoxId, itemId) => {
     return new Promise((resolve, reject) => {
         var xhr = new XMLHttpRequest();
-        xhr.open("PUT", `https://auc-web.onrender.com/api/idea/${itemId}`, true); // Using PUT method for update
+        xhr.open("PUT", `https://auc-web-q448.onrender.com/api/idea/${itemId}`, true); // Using PUT method for update
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
@@ -50,7 +72,7 @@ const updateData = (data, canvasBoxId, itemId) => {
 
 const getData = (callback) => {
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://auc-web.onrender.com/api/idea", true);
+    xhr.open("GET", "https://auc-web-q448.onrender.com/api/idea", true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -66,7 +88,7 @@ const getData = (callback) => {
 const deleteData = (id) => {
     return new Promise((resolve, reject) => {
         var xhr = new XMLHttpRequest();
-        xhr.open("DELETE", `https://auc-web.onrender.com/api/idea/${id}`, true);
+        xhr.open("DELETE", `https://auc-web-q448.onrender.com/api/idea/${id}`, true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
@@ -81,6 +103,8 @@ const deleteData = (id) => {
         };
         xhr.send();
     });
+
+
 }
 
 
