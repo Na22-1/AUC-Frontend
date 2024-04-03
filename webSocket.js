@@ -1,6 +1,6 @@
 import {load} from './script.js'
 
-let ws = new WebSocket('wss://na22-1.github.io/AUC-Frontend//user');
+let ws = new WebSocket('wss://na22-1.github.io/AUC-Frontend/user');
 
 ws.onmessage = message => {
     load();
