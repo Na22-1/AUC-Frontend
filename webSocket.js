@@ -1,6 +1,9 @@
 import {load} from './script.js'
 
-let ws = new WebSocket('wss://na22-1.github.io/AUC-Frontend/user');
+
+const url = 'auc-api.onrender.com';
+
+let ws = new WebSocket('wss://' + url +'/user');
 
 ws.onmessage = message => {
     load();
