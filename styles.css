@@ -1,0 +1,259 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* CSS for paragraphs */
+.modal-content p {
+    margin: 10px 0;
+}
+
+/* CSS for unordered list */
+.modal-content ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+/* CSS for list items */
+.modal-content li {
+    margin: 5px 0;
+    list-style-type: disc;
+}
+
+/* CSS for spans within list items */
+.modal-content li span {
+    font-size: 12px;
+    font-family: "Times New Roman", serif;
+    mso-fareast-font-family: "Times New Roman";
+    mso-font-kerning: 0;
+    mso-fareast-language: DE;
+}
+.text {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 0;
+    background: transparent;
+    width: 55%;
+    margin-right: 10px;
+    font-size: inherit;
+    text-align: center;
+    outline: none;
+}
+
+.infoBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.list-inline {
+    list-style-position: inside;
+}
+
+.section {
+    padding: 20px 40px;
+}
+
+.section__header {
+    text-align: center;
+    background-color: #8fc1d0;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.section__content {
+    display: grid;
+    grid-template-rows: minmax(504px, min-content) 100px minmax(150px, min-content);
+}
+
+.section__content-1 {
+    display: grid;
+    grid-template-rows: minmax(504px, min-content);
+    grid-template-columns: 3fr 100px 12fr;
+}
+
+.left__container,
+.main__panel__containers,
+.bottom__container {
+    padding: 10px;
+    position: relative;
+}
+
+.left__container {
+    border: 3px solid black;
+    background-color: rgba(204, 201, 201, 0.51);
+    padding: 10px;
+    position: relative;
+}
+
+.main__panel {
+    background-color: rgba(204, 201, 201, 0.51);
+    display: grid;
+    grid-template-rows: repeat(6, minmax(84px, min-content));
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "container-1 container-2 container-8"
+                        "container-1 container-2 container-8"
+                        "container-1 container-4 container-3"
+                        "container-5 container-4 container-3"
+                        "container-5 container-7 container-6"
+                        "container-5 container-7 container-6";
+    align-self: start;
+    border: 3px solid black;
+}
+
+.container-1 {
+    grid-area: container-1;
+    border-bottom: dashed;
+    border-right: solid;
+}
+
+.container-5 {
+    grid-area: container-5;
+    border-right: solid;
+}
+
+.container-2 {
+    grid-area: container-2;
+    border-bottom: solid;
+}
+
+.container-4 {
+    grid-area: container-4;
+    border-bottom: dashed;
+}
+
+.container-7 {
+    grid-area: container-7;
+}
+
+.container-3 {
+    grid-area: container-3;
+    border-left: solid;
+    border-bottom: solid;
+}
+
+.container-6 {
+    grid-area: container-6;
+    border-left: solid;
+}
+.container-8 {
+    grid-area: container-8;
+    border-left: solid;
+    border-bottom: solid;
+}
+.main__panel__containers {
+    border-color: black;
+    border-width: 3px;
+    position: relative;
+}
+
+.bottom__container {
+    background-color: rgba(204, 201, 201, 0.51);
+    border: 3px solid black;
+    padding: 10px;
+    position: relative;
+}
+
+.container__text {
+    text-align: center;
+    font-size: 20px;
+}
+
+.image__container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.image__container img {
+    width: 40px;
+    height: 40px;
+}
+
+.image__container_numbers {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.image__container_numbers img {
+    color: rgba(0, 0, 0, 0.53);
+    width: 30px;
+    height: 30px;
+}
+
+.gap__container {
+    position: relative;
+}
+
+.gap__container-image {
+    width: max-content;
+    position: absolute;
+}
+
+.gap__container-image-1 {
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.gap__container-image-2 {
+    left: 80px;
+    bottom: 50%;
+    transform: rotate(-90deg) translateX(-30%);
+}
+
+.gap__container-image-3 {
+    right: 130px;
+    top: 50%;
+    transform: rotate(90deg) translateX(-30%);
+}
+
+.gap__container-image img {
+    width: 90px;
+}
