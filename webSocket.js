@@ -1,7 +1,7 @@
 import {load} from './script.js'
 
 
-const url = 'auc-api.onrender.com';
+const url = 'auc-web-q448.onrender.com';
 
 let ws = new WebSocket('wss://' + url +'/user');
 
