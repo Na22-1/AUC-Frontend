@@ -1,5 +1,7 @@
 tsParticles.loadJSON("tsparticles", "json/particles.json");
 
+const url = 'https://auc-web-q448.onrender.com/'
+
 document.getElementById("createKey").addEventListener("click", function () {
     var bordKey = document.getElementById("keyCreate").value.trim();
     if (bordKey !== "") {
@@ -23,8 +25,6 @@ document.getElementById("createKey").addEventListener("click", function () {
         alert("Please enter a key.");
     }
 });
-
-const url = 'http://localhost:8080/'
 
 const showMessage = (message, type) => {
     var messageElement = document.getElementById("message");

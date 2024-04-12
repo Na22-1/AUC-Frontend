@@ -1,5 +1,5 @@
-//const url = 'https://auc-web-q448.onrender.com/';
-const url = 'http://localhost:8080/'
+const url = 'https://auc-web-q448.onrender.com/';
+
 
 const insertData = (data, canvasBoxId, boardId) => {
     return new Promise((resolve, reject) => {
@@ -50,10 +50,9 @@ const updateData = (data, canvasBoxId, itemId, boardId) => {
     });
 }
 
-
-const getData = (callback) => {
+const getData = (boardKey, callback) => {
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", url + "api/idea", true);
+    xhr.open("GET", url + `api/idea/${boardKey}`, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {

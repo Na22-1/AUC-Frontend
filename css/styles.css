@@ -4,9 +4,8 @@
     box-sizing: border-box;
 }
 
-.lizenz img {
-    width: 100px;
-    height: 30px;
+.button {
+    display: none;
 }
 
 /* The Modal (background) */

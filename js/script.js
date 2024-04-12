@@ -114,6 +114,7 @@ const informations = [
             <li class="MsoNormal" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;line-height:normal;mso-list:l0 level1 lfo1;tab-stops:list 36.0pt"><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-font-kerning:0pt;mso-ligatures:none;mso-fareast-language:DE">Welche weiteren, neuen Knowledge Impediments sind möglicherweise seit dem letzten Sprint aufgetaucht?<o:p></o:p></span></li>
         </ul>`
 ];
+let key;
 
 function createList(listInputId, addBtnId, listId,  canvasBoxId, data, boardKey) {
 
@@ -147,7 +148,7 @@ function createList(listInputId, addBtnId, listId,  canvasBoxId, data, boardKey)
                     listInput.value = '';
                     addEditDeleteListener(createdItem, canvasBoxId);
                     addToListBtn.disable = false;
-                    onClick();
+                    onClick(key);
                 })
                 .catch(error => {
                     console.error("Error:", error);
@@ -224,7 +225,7 @@ function addEditDeleteListener(item, canvasBoxId, boardKey) {
                         // Update data on the server
                         updateData(newText, canvasBoxId, itemId, boardKey)
                             .then(() => {
-                                onClick(); // Notify websocket
+                                onClick(key); // Notify websocket
                             })
                             .catch((error) => {
                                 console.error("Error:", error);
@@ -233,7 +234,7 @@ function addEditDeleteListener(item, canvasBoxId, boardKey) {
                         item.parentNode.removeChild(item); // Remove the whole list item
                         deleteData(itemId)
                             .then(() => {
-                                onClick(); // Notify websocket
+                                onClick(key); // Notify websocket
                             })
                             .catch((error) => {
                                 console.error("Error:", error);
@@ -250,49 +251,52 @@ function addEditDeleteListener(item, canvasBoxId, boardKey) {
     });
 }
 
-function refresh() {
-    getData((responseText) => {
-        const fetchedData = JSON.parse(responseText);
-        const listIds = ['', 'brainstormingList', 'knowledgeList', 'reflexionList', 'neuePerspektivenList', 'VisionList', 'definitionOfUnlearnedList', 'vorbereitungList', 'actionItemsList', 'measuringUnlearningItemsList', 'feedbackList'];
+function refresh(boardKey) {
+    if (boardKey === key) {
+        getData(boardKey, (responseText) => {
+            const fetchedData = JSON.parse(responseText);
+            const listIds = ['', 'knowledgeList', 'targetingPrioritizationList', 'teamReflexionList', 'sharedPerspectiveList', 'unlearningVisionList', 'definitionOfUnlearnedList', 'interventionPlanningList', 'actionItemsList', 'measuringUnlearningItemsList', 'feedbackList'];
 
-        listIds.forEach((listId) => {
-            let data = fetchedData.filter((item) => item.canvasBox === listIds.indexOf(listId));
-            const list = document.getElementById(listId);
-            let existingItems = list ? list.getElementsByTagName('li') : [];
+            listIds.forEach((listId) => {
+                let data = fetchedData.filter((item) => item.canvasBox === listIds.indexOf(listId));
+                const list = document.getElementById(listId);
+                let existingItems = list ? list.getElementsByTagName('li') : [];
 
-            // Update existing items and remove items not present in fetched data
-            Array.from(existingItems).forEach(item => {
-                let input = item.querySelector('input');
-                let span = item.querySelector('span');
-                let matchingData = data.find(element => input.value === element.id.toString());
-
-                if (matchingData) {
-                    if (input.value === matchingData.id.toString()) {
-                        if (span.textContent !== matchingData.description) {
-                            span.textContent = matchingData.description; // Update description
-                        }
-                    }
-                } else {
-                    // Remove the item if not present in fetched data
-                    item.remove();
-                }
-            });
-            // Add new items from fetched data
-            data.forEach(element => {
-                let isItemInList = Array.from(existingItems).some(item => {
+                // Update existing items and remove items not present in fetched data
+                Array.from(existingItems).forEach(item => {
                     let input = item.querySelector('input');
-                    return input.value === element.id.toString();
-                });
+                    let span = item.querySelector('span');
+                    let matchingData = data.find(element => input.value === element.id.toString());
 
-                if (!isItemInList) {
-                    let createdItem = addNewItem(element, list);
-                    addEditDeleteListener(createdItem, listIds.indexOf(listId));
-                }
+                    if (matchingData) {
+                        if (input.value === matchingData.id.toString()) {
+                            if (span.textContent !== matchingData.description) {
+                                span.textContent = matchingData.description; // Update description
+                            }
+                        }
+                    } else {
+                        // Remove the item if not present in fetched data
+                        item.remove();
+                    }
+                });
+                // Add new items from fetched data
+                data.forEach(element => {
+                    let isItemInList = Array.from(existingItems).some(item => {
+                        let input = item.querySelector('input');
+                        return input.value === element.id.toString();
+                    });
+
+                    if (!isItemInList) {
+                        let createdItem = addNewItem(element, list);
+                        addEditDeleteListener(createdItem, listIds.indexOf(listId));
+                    }
+                });
             });
         });
-    });
+    }
 }
 function load(boardData, boardKey) {
+    key=boardKey;
     if (typeof boardData === 'undefined' || boardData === null || boardData.length === 0) {
         boardData=[];
         callCreatLists(boardData,boardKey);
