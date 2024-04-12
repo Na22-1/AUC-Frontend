@@ -1,6 +1,3 @@
-tsParticles.loadJSON("tsparticles", "json/particles.json");
-
-
 document.getElementById("loginButton").addEventListener("click", async function (event) {
     // Prevent the default behavior of the link click
     event.preventDefault();

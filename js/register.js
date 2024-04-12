@@ -1,5 +1,3 @@
-tsParticles.loadJSON("tsparticles", "json/particles.json");
-
 const url = 'https://auc-web-q448.onrender.com/'
 const handleCreateKey = () => {
     var bordKey = document.getElementById("keyCreate").value.trim();
