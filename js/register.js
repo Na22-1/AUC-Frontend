@@ -1,4 +1,4 @@
-//tsParticles.loadJSON("tsparticles", "json/particles.json");
+tsParticles.loadJSON("tsparticles", "json/particles.json");
 
 document.getElementById("createKey").addEventListener("click", function () {
     var bordKey = document.getElementById("keyCreate").value.trim();
