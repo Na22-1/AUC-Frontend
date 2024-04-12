@@ -133,20 +133,16 @@ input{
     margin-top: 8px;
     font-size: 14px;
     font-weight: 3000;
+    text-align: center;
 }
 ::placeholder{
     color: #e5e5e5;
 }
 
-hr {
-    width: 50%;
-    background-color: #000000;
-
-}
-
 .button{
     margin-top: 0;
-    width: 100%;
+    margin-left: 80px;
+    width: 50%;
     background-color: #ffffff;
     color: #080710;
     padding: 10px;
@@ -154,5 +150,5 @@ hr {
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
-
+    text-align: center;
 }
