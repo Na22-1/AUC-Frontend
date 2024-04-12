@@ -39,7 +39,7 @@ const checkKey = async (bordKey) => {
                 // handle other status codes
                 console.log('Error:', response.statusText);
             }
-            showMessage("Key exisitert nicht, bitte richtige eingeben!", "error");
+            showMessage("Key exisitert nicht, bitte richtige eingeben!", "message2");
 
             return false;
         }

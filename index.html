@@ -1,54 +1,48 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Matteo Bruni">
-    <title>Signin Template - tsParticles</title>
 
-    <!-- Custom styles for this template -->
-    <link href="css/particles.css" rel="stylesheet"/>
+    <title>Agile Unlearning Canvas</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
     <link href="css/login.css" rel="stylesheet"/>
 </head>
-
 <body>
-<div id="tsparticles"></div>
-<main class="box">
-    <h2>Login</h2>
-    <div id="message" class="hidden"></div><br>
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
 
-    <form>
-        <div class="keyInput">
-            <label for="keyCreate">Bitte neues Key erstellen</label>
-            <input type="key" name="keyCreate" id="keyCreate" placeholder="Key"
-                   required/>
-        </div>
-        <div>
-            <a id="createKey" class="button" style="float: left;">Erstellen</a>
-
-            <!--<button type="submit" id="createKey" name="" style="float: left;">Erstellen</button>--><br><br>
-        </div>
+<form class="form1">
+    <h3>Agile Unlearning Canvas</h3>
+    <h4> Board erstellen </h4>
+    <div id="message1" class="hidden"></div>
+    <div class="keyInput">
         <br>
-        <div class="keyInput">
-            <label for="keyInput">Bitte Key eingeben</label>
-            <input type="key" name="keyInput" id="keyInput" placeholder="Key"
-                   required/>
-        </div>
-        <div>
-            <a id="loginButton" class="button" style="float: left;">Login</a>
-        </div>
-    </form>
-</main>
-<footer>
-</footer>
+        <input type="key" name="keyCreate" id="keyCreate" placeholder="Bitte neues Key erstellen"
+               required/>
+        <br>
+        <a id="createKey" class="button" style="float: left;">Erstellen</a>
+    </div>
 
-<script src="https://cdn.jsdelivr.net/npm/tsparticles@1.34.1/tsparticles.min.js"
-        integrity="sha256-D6LXCdCl4meErhc25yXnxIFUtwR96gPo+GtLYv89VZo=" crossorigin="anonymous"></script>
+</form>
+<form class="form2">
+    <h3>Agile Unlearning Canvas</h3>
+    <h4> Zum Board </h4>
+    <div id="message2" class="hidden"></div>
+    <div class="keyInput">
+        <br>
+        <input type="key" name="keyInput" id="keyInput" placeholder="Bitte Key eingeben"
+               required/>
+        <br>
+        <a id="loginButton" class="button" style="float: left;">Login</a>
+    </div>
+
+</form>
+</body>
 <script type="text/javascript" src="js/register.js"></script>
 <script type="text/javascript" src="js/login.js"></script>
-
-</body>
-
 </html>
