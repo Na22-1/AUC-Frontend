@@ -1,16 +1,11 @@
-import {refresh} from './script.js'
+import {load} from './script.js'
 
-
-const url = 'auc-web-q448.onrender.com';
-
-let ws = new WebSocket('wss://' + url +'/user');
+let ws = new WebSocket('ws://localhost:8080/user');
 
 ws.onmessage = message => {
-    refresh();
+    load();
 }
-ws.onerror = function(error) {
-    console.error('WebSocket error:', error);
-};
+
 function onClick() {
     ws.send("Update!")
 }

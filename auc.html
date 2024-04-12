@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agile Unlearning Canvas</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p></p>
+    </div>
+
+</div>
+<div class="section">
+    <h1 class="section__header">Agile Unlearning Canvas</h1>
+    <img id="infoBtn-0" src="Icons/info.png" class="infoBtn" alt="Info"/>
+
+    <div class="section__content">
+
+        <div class="section__content-1">
+            <div class="left__container">
+                <p class="container__text">Feedback</p>
+                <img id="infoBtn-10" src="Icons/info.png" class="infoBtn" alt="Info"/>
+                <ul class="list-inline" id="feedbackList"></ul>
+                <input type="text" id="feedbackListInput" class="text" placeholder="Hier Text eingeben">
+                <button class="button" id="feedbackListBtn"></button>
+                <div class="image__container">
+                    <img src="Icons/Feedback.png" alt="">
+                </div>
+                <div class="image__container_numbers">
+                    <img src="Icons/ten.png">
+                </div>
+            </div>
+            <div class="gap__container">
+                <div class="gap__container-image gap__container-image-1">
+                    <img src="Icons/Doodle-Arrow-PNG-1.png" alt="">
+                </div>
+            </div>
+            <div class="main__panel">
+                <div class="main__panel__containers container-1">
+                    <p class="container__text">Knowledge Impediments</p>
+                    <img id="infoBtn-1" src="Icons/info.png" class="infoBtn" alt="Info"/>
+                    <div class="list-container" id="listContainer1"></div>
+                    <ul class="list-inline" id="knowledgeList"></ul>
+                    <input type="text" id="knowledgelistInput" class="text" placeholder="Hier Text eingeben">
+                    <button class="button" id="knowledgeToListBtn"></button>
+                    <div class="image__container">
+                        <img src="Icons/Brainstorming.png" alt="">
+                    </div>
+                    <div class="image__container_numbers">
+                        <img src="Icons/one.png">
+                    </div>
+                </div>
+
+                <div class="main__panel__containers container-5">
+                    <p class="container__text">Targeting & Prioritization</p>
+                    <img id="infoBtn-2" src="Icons/info.png" class="infoBtn" alt="Info"/>
+                    <ul class="list-inline" id="targetingPrioritizationList"></ul>
+                    <input type="text" id="targetingPrioritizationInput" class="text" placeholder="Hier Text eingeben">
+                    <button class="button" id="targetingPrioritizationBtn"></button>
+                    <div class="image__container">
+                        <img src="Icons/Knowledge%20Impediments.png" alt="">
+                    </div>
+                    <div class="image__container_numbers">
+                        <img src="Icons/two.png">
+                    </div>
+                </div>
+                <div class="main__panel__containers container-2">
+                    <p class="container__text">Team Reflection</p>
+                    <img id="infoBtn-3" src="Icons/info.png" class="infoBtn" alt="Info"/>
+                    <ul class="list-inline" id="teamReflexionList"></ul>
+                    <input type="text" id="teamReflexionListInput" class="text" placeholder="Hier Text eingeben">
+                    <button class="button" id="teamReflexionListBtn"></button>
+                    <div class="image__container">
+                        <img src="Icons/Reflexion.png" alt="">
+                    </div>
+                    <div class="image__container_numbers">
+                        <img src="Icons/three.png">
+                    </div>
+                </div>
+                <div class="main__panel__containers container-4">
+                    <p class="container__text">Shared Perspective</p>
+                    <img id="infoBtn-4" src="Icons/info.png" class="infoBtn" alt="Info"/>
+                    <ul class="list-inline" id="sharedPerspectiveList"></ul>
+                    <input type="text" id="sharedPerspectiveListInput" class="text" placeholder="Hier Text eingeben">
+                    <button class="button" id="sharedPerspectiveListBtn"></button>
+                    <div class="image__container">
+                        <img src="Icons/Neue%20Perspektiven.png" alt="">
+                    </div>
+                    <div class="image__container_numbers">
+                        <img src="Icons/four.png">
+                    </div>
+                </div>
+                <div class="main__panel__containers container-7">
+                    <p class="container__text">Unlearning Vision</p>
+                    <img id="infoBtn-5" src="Icons/info.png" class="infoBtn" alt="Info"/>
+                    <ul class="list-inline" id="unlearningVisionList"></ul>
+                    <input type="text" id="unlearningVisionListInput" class="text" placeholder="Hier Text eingeben">
+                    <button class="button" id="unlearningVisionListBtn"></button>
+                    <div class="image__container">
+                        <img src="Icons/vision.png" alt="">
+                    </div>
+                    <div class="image__container_numbers">
+                        <img src="Icons/five.png">
+                    </div>
+                </div>
+                <div class="main__panel__containers container-8">
+                    <p class="container__text">Definition of Unlearned</p>
+                    <img id="infoBtn-6" src="Icons/info.png" class="infoBtn" alt="Info"/>
+                    <ul class="list-inline" id="definitionOfUnlearnedList"></ul>
+                    <input type="text" id="definitionOfUnlearnedListInput" class="text" placeholder="Hier Text eingeben">
+                    <button class="button" id="definitionOfUnlearnedListBtn"></button>
+                    <div class="image__container">
+                        <img src="Icons/Definition%20of%20Unlearned.png" alt="">
+                    </div>
+                    <div class="image__container_numbers">
+                        <img src="Icons/six.png">
+                    </div>
+                </div>
+                <div class="main__panel__containers container-3">
+                    <p class="container__text">Intervention Planning</p>
+                    <img id="infoBtn-7" src="Icons/info.png" class="infoBtn" alt="Info"/>
+                    <ul class="list-inline" id="interventionPlanningList"></ul>
+                    <input type="text" id="interventionPlanningListInput" class="text" placeholder="Hier Text eingeben">
+                    <button class="button" id="interventionPlanningListBtn"></button>
+                    <div class="image__container">
+                        <img src="Icons/Vorbereitung.png" alt="">
+                    </div>
+                    <div class="image__container_numbers">
+                        <img src="Icons/seven.png">
+                    </div>
+                </div>
+                <div class="main__panel__containers container-6">
+                    <p class="container__text">Action Items</p>
+                    <img id="infoBtn-8" src="Icons/info.png" class="infoBtn" alt="Info"/>
+                    <ul class="list-inline" id="actionItemsList"></ul>
+                    <input type="text" id="actionItemsListInput" class="text" placeholder="Hier Text eingeben">
+                    <button class="button" id="actionItemsListBtn"></button>
+                    <div class="image__container">
+                        <img src="Icons/Action%20Items.png" alt="">
+                    </div>
+                    <div class="image__container_numbers">
+                        <img src="Icons/eight.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="gap__container">
+            <div class="gap__container-image gap__container-image-2">
+                <img src="Icons/Doodle-Arrow-PNG-1.png" alt="">
+            </div>
+            <div class="gap__container-image gap__container-image-3">
+                <img src="Icons/Doodle-Arrow-PNG-1.png" alt="">
+            </div>
+        </div>
+        <div class="bottom__container">
+            <p class="container__text">Measuring Unlearning</p>
+            <img id="infoBtn-9" src="Icons/info.png" class="infoBtn" alt="Info"/>
+            <ul class="list-inline" id="measuringUnlearningItemsList"></ul>
+            <input type="text" id="measuringUnlearningListInput" class="text" placeholder="Hier Text eingeben">
+            <button class="button" id="measuringUnlearningListBtn"></button>
+            <div class="image__container">
+                <img src="Icons/Measuring%20Unlearning.png" alt="">
+            </div>
+            <div class="image__container_numbers">
+                <img src="Icons/nine.png">
+            </div>
+        </div>
+        <br><br>
+        <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span property="dct:title">Agile Unlearning Canvas</span>
+            is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1"
+                                 target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC
+                BY-NC-ND 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
+                                 src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img
+                        style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
+                        src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img
+                        style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
+                        src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img
+                        style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
+                        src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1"></a>
+        </p>
+    </div>
+</div>
+
+<script type="module" src="js/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+<script type="module">
+    import {load} from './js/script.js';
+
+    window.onload = function () {
+        // Import the load function from the script.js module
+
+        // get the boardData and boardKey values from session storage or cookies
+        const boardData = sessionStorage.getItem('boardData');
+        const boardKey = sessionStorage.getItem('bordKey');
+        if (boardKey === null) {
+            //  window.location.href = "index.html";
+        }
+        if (boardData.length !== 0) {
+            const data = JSON.parse(boardData);
+        }
+        // call the load function with the retrieved values
+        load(JSON.parse(boardData), boardKey);
+    };
+    window.addEventListener('beforeunload', function (event) {
+        // Clear sessionStorage
+        sessionStorage.removeItem('boardData');
+        sessionStorage.removeItem('bordKey');
+    });
+</script>
+</body>
+</html>

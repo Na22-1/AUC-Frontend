@@ -1,9 +1,10 @@
-const url = 'https://auc-web-q448.onrender.com/';
+//const url = 'https://auc-web-q448.onrender.com/';
+const url = 'http://localhost:8080/'
 
-const insertData = (data, canvasBoxId) => {
+const insertData = (data, canvasBoxId, boardId) => {
     return new Promise((resolve, reject) => {
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", url + "api/idea", true);
+        xhr.open("POST", url + `api/idea/${boardId}`, true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
@@ -24,7 +25,7 @@ const insertData = (data, canvasBoxId) => {
     });
 }
 
-const updateData = (data, canvasBoxId, itemId) => {
+const updateData = (data, canvasBoxId, itemId, boardId) => {
     return new Promise((resolve, reject) => {
         var xhr = new XMLHttpRequest();
         xhr.open("PUT", url + `api/idea/${itemId}`, true); // Using PUT method for update
@@ -42,7 +43,8 @@ const updateData = (data, canvasBoxId, itemId) => {
         };
         var body = {
             canvasBox: canvasBoxId,
-            description: data
+            description: data,
+            boardKey_id: boardId
         }
         xhr.send(JSON.stringify(body));
     });

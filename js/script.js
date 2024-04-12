@@ -1,7 +1,13 @@
 import {insertData, getData, updateData, deleteData} from './server.js';
 import {onClick} from './webSocket.js';
 
-const informations = ['',
+const informations = [
+    `<p class="MsoNormal" style="font-weight: bold">Gesamtkonzeption <o:p></o:p></p>
+        <p class="MsoNormal" style="text-align: justify;">Die Agile Unlearning Canvas (AUC) ist für den Einsatz in Retrospektiven konzipiert und adressiert Teams (team/group unlearning support).</p>
+        <p>Die Canvas, ihre Feldergruppen sowie die einzelnen Felder sollen von SCRUM-Teams intuitiv verstanden werden. Dazu sollen auf nützliche Weise Konzepte aus der agilen Welt bzw. SCRUM, die den Teams bekannt sind, mit Konzepten des Verlernens kombiniert werden, die den Teams in dieser Art so noch nicht bekannt sind.<o:p></o:p></p>
+        <p>Durch die Nummerierung und die räumliche Anordnung der Felder soll eine leichte Navigation durch die Canvas ermöglicht werden, die den Verlernprozess subtil unterstützt. </p>
+        <p>Damit die Teams möglichst selbstorganisiert während einer Retrospektive die Canvas nutzen können, daher ist eine angemessene Anleitung durch die AUC (‚guidance‘) wichtig. Damit die Felder korrekt und sinnvoll befüllt werden können, spielen Symbole, Titel, sowie Erklärungen und Leitfragen eine große Rolle. </p>`,
+
     `<p class="MsoNormal" style="font-weight: bold">Knowledge Impediments <o:p></o:p></p>
         <p class="MsoNormal" style="text-align: justify;">Jedes SCRUM-Team ist einzigartig und entwickelt mit der Zeit eine eigene Team-Kultur. Dabei entstehen ganz bestimmte Strukturen im Denken und Handeln, die das Team für sinnvoll hält, um ein nützliches Software-Produkt und Mehrwert für den Kunden zu generieren. Jedoch können diese Wissenstrukturen selbst zum Hindernis werden und so die Qualität des Produkts negativ beeinflussen. Diese ‚Knowledge Impediments‘ stören den SCRUM-Prozess. Daher sollte ein SCRUM-Team seine Denkweisen und Praktiken, d. h. sein bisheriges Wissen, kontinuierlich hinterfragen, um hinderliche Strukturen zu identifzieren und sich gezielt von diesen lösen.</p>
         <p>Der Prozess des ‚Agilen Verlernens‘ beginnt damit, dass jedes Teammitglied im Rahmen eines Brainstormings zu Wort kommt und aufschreibt, wo hinderliche Wissensstrukturen gesehen werden. Am Ende ergibt sich ein gemeinsames Bild hinderlicher Strukturen, mit dem weitergearbeitet werden kann im Verlernprozess.<o:p></o:p></p>
@@ -109,7 +115,7 @@ const informations = ['',
         </ul>`
 ];
 
-function createList(listInputId, addBtnId, listId, canVote = false, canvasBoxId, data) {
+function createList(listInputId, addBtnId, listId,  canvasBoxId, data, boardKey) {
 
     const listInput = document.getElementById(listInputId);
     const addToListBtn = document.getElementById(addBtnId);
@@ -118,8 +124,7 @@ function createList(listInputId, addBtnId, listId, canVote = false, canvasBoxId,
     if (data.length !== 0) {
         data.forEach((element) => {
             let createdItem = addNewItem(element, list);
-            addEditDeleteListener(createdItem, canvasBoxId);
-            //    canVoteAdd(createdItem);
+            addEditDeleteListener(createdItem, canvasBoxId, boardKey);
         });
     }
     const handleKeypress = (e) => {
@@ -136,7 +141,7 @@ function createList(listInputId, addBtnId, listId, canVote = false, canvasBoxId,
         const newItemText = listInput.value.trim();
         if (newItemText !== '') {
             addToListBtn.disable = true;
-            insertData(newItemText, canvasBoxId)
+            insertData(newItemText, canvasBoxId, boardKey)
                 .then(responseData => {
                     let createdItem = addNewItem(JSON.parse(responseData), list);
                     listInput.value = '';
@@ -178,6 +183,7 @@ function createList(listInputId, addBtnId, listId, canVote = false, canvasBoxId,
         })
     }
 }
+
 function addNewItem(element, list) {
     const newItem = document.createElement('li');
     const span = document.createElement('span');
@@ -192,7 +198,8 @@ function addNewItem(element, list) {
 
     return newItem;
 }
-function addEditDeleteListener(item, canvasBoxId) {
+
+function addEditDeleteListener(item, canvasBoxId, boardKey) {
     item.addEventListener('click', (event) => {
         const target = event.target;
         if (target.tagName === 'SPAN' && target.classList.contains('voteCount')) {
@@ -210,12 +217,12 @@ function addEditDeleteListener(item, canvasBoxId) {
                     const newText = inputField.value.trim();
                     const hiddenInput = item.querySelector('input[type="hidden"]');
                     const itemId = hiddenInput.value;
-                    if (newText!== '') {
+                    if (newText !== '') {
                         const newSpan = document.createElement('span');
                         newSpan.textContent = newText;
                         item.replaceChild(newSpan, inputField);
                         // Update data on the server
-                        updateData(newText, canvasBoxId, itemId)
+                        updateData(newText, canvasBoxId, itemId, boardKey)
                             .then(() => {
                                 onClick(); // Notify websocket
                             })
@@ -242,6 +249,7 @@ function addEditDeleteListener(item, canvasBoxId) {
         }
     });
 }
+
 function refresh() {
     getData((responseText) => {
         const fetchedData = JSON.parse(responseText);
@@ -269,7 +277,6 @@ function refresh() {
                     item.remove();
                 }
             });
-
             // Add new items from fetched data
             data.forEach(element => {
                 let isItemInList = Array.from(existingItems).some(item => {
@@ -285,34 +292,36 @@ function refresh() {
         });
     });
 }
-function load() {
-    getData((responseText) => {
-        const data = JSON.parse(responseText);
-
-        createList('brainstorminglistInput', 'brainstormingaddToListBtn', 'brainstormingList', true,
-            1, data.filter((item) => item.canvasBox === 1));
-        createList('knowledgelistInput', 'knowledgeToListBtn', 'knowledgeList', false,
-            2, data.filter((item) => item.canvasBox === 2));
-        createList('reflexionListInput', 'reflexionListBtn', 'reflexionList', false,
-            3, data.filter((item) => item.canvasBox === 3));
-        createList('neuePerspektivenListInput', 'neuePerspektivenListBtn', 'neuePerspektivenList', false,
-            4, data.filter((item) => item.canvasBox === 4));
-        createList('VisionListInput', 'VisionListBtn', 'VisionList', false,
-            5, data.filter((item) => item.canvasBox === 5));
-        createList('definitionOfUnlearnedListInput', 'definitionOfUnlearnedListBtn', 'definitionOfUnlearnedList', false,
-            6, data.filter((item) => item.canvasBox === 6));
-        createList('vorbereitungListInput', 'vorbereitungListBtn', 'vorbereitungList', false,
-            7, data.filter((item) => item.canvasBox === 7));
-        createList('actionItemsListInput', 'actionItemsListBtn', 'actionItemsList', false,
-            8, data.filter((item) => item.canvasBox === 8));
-        createList('measuringUnlearningListInput', 'measuringUnlearningListBtn', 'measuringUnlearningItemsList', false,
-            9, data.filter((item) => item.canvasBox === 9));
-        createList('feedbackListInput', 'feedbackListBtn', 'feedbackList', false,
-            10, data.filter((item) => item.canvasBox === 10));
-    }, (error) => {
-        console.error("Error:", error);
-    });
+function load(boardData, boardKey) {
+    if (typeof boardData === 'undefined' || boardData === null || boardData.length === 0) {
+        boardData=[];
+        callCreatLists(boardData,boardKey);
+    }
+    else{
+        callCreatLists(boardData,boardKey);
+    }
 }
-load();
+function callCreatLists(boardData, boardKey){
+    createList('knowledgelistInput', 'knowledgeToListBtn', 'knowledgeList',
+        1, boardData.filter((item) => item.canvasBox === 1), boardKey);
+    createList('targetingPrioritizationInput', 'targetingPrioritizationBtn', 'targetingPrioritizationList',
+        2, boardData.filter((item) => item.canvasBox === 2), boardKey);
+    createList('teamReflexionListInput', 'teamReflexionListBtn', 'teamReflexionList',
+        3, boardData.filter((item) => item.canvasBox === 3), boardKey);
+    createList('sharedPerspectiveListInput', 'sharedPerspectiveListBtn', 'sharedPerspectiveList',
+        4, boardData.filter((item) => item.canvasBox === 4), boardKey);
+    createList('unlearningVisionListInput', 'unlearningVisionListBtn', 'unlearningVisionList',
+        5, boardData.filter((item) => item.canvasBox === 5), boardKey);
+    createList('definitionOfUnlearnedListInput', 'definitionOfUnlearnedListBtn', 'definitionOfUnlearnedList',
+        6, boardData.filter((item) => item.canvasBox === 6), boardKey);
+    createList('interventionPlanningListInput', 'interventionPlanningListBtn', 'interventionPlanningList',
+        7, boardData.filter((item) => item.canvasBox === 7), boardKey);
+    createList('actionItemsListInput', 'actionItemsListBtn', 'actionItemsList',
+        8, boardData.filter((item) => item.canvasBox === 8), boardKey);
+    createList('measuringUnlearningListInput', 'measuringUnlearningListBtn', 'measuringUnlearningItemsList',
+        9, boardData.filter((item) => item.canvasBox === 9), boardKey);
+    createList('feedbackListInput', 'feedbackListBtn', 'feedbackList',
+        10, boardData.filter((item) => item.canvasBox === 10), boardKey);
+}
 
-export {refresh};
+export {refresh, load};

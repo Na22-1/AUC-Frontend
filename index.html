@@ -1,181 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agile Unlearning Canvas</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Matteo Bruni">
+    <title>Login</title>
+
+    <!-- Custom styles for this template -->
+    <link href="css/particles.css" rel="stylesheet"/>
+    <link href="css/login.css" rel="stylesheet"/>
 </head>
+
 <body>
-<div id="myModal" class="modal">
+<div id="tsparticles"></div>
+<main class="box">
+    <h2>Login</h2>
+    <div id="message" class="hidden"></div><br>
 
-    <!-- Modal content -->
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <p></p>
-    </div>
-
-</div>
-<div class="section">
-    <h1 class="section__header">Agile Unlearning Canvas</h1>
-    <div class="section__content">
-
-        <div class="section__content-1">
-            <div class="left__container">
-                <p class="container__text">Feedback</p>
-                <img id="infoBtn-10" src="Icons/info.png" class="infoBtn" alt="Info" />
-                <ul class="list-inline" id="feedbackList"></ul>
-                <input type="text" id="feedbackListInput" class="text" placeholder="Feedback">
-                <button class="button" id="feedbackListBtn"></button>
-                <div class="image__container">
-                    <img src="Icons/Feedback.png" alt="">
-                </div>
-                <div class="image__container_numbers">
-                    <img src="Icons/ten.png">
-                </div>
-            </div>
-            <div class="gap__container">
-                <div class="gap__container-image gap__container-image-1">
-                    <img src="Icons/Doodle-Arrow-PNG-1.png" alt="">
-                </div>
-            </div>
-            <div class="main__panel">
-                <div class="main__panel__containers container-1">
-                    <p class="container__text">Knowledge Impediments</p>
-                    <img id="infoBtn-1" src="Icons/info.png" class="infoBtn" alt="Info" />
-                    <div class="list-container" id="listContainer1"></div>
-                    <ul class="list-inline" id="brainstormingList"></ul>
-                    <input type="text" id="brainstorminglistInput" class="text" placeholder="Knowledge Impediments">
-                    <button class="button" id="brainstormingaddToListBtn"></button>
-                    <div class="image__container">
-                        <img src="Icons/Brainstorming.png" alt="">
-                    </div>
-                    <div class="image__container_numbers">
-                        <img src="Icons/one.png">
-                    </div>
-                </div>
-
-                <div class="main__panel__containers container-5">
-                    <p class="container__text">Targeting & Prioritization</p>
-                    <img id="infoBtn-2" src="Icons/info.png" class="infoBtn" alt="Info"/>
-                    <ul class="list-inline" id="knowledgeList"></ul>
-                    <input type="text" id="knowledgelistInput" class="text" placeholder="Targeting & Prioritization">
-                    <button class="button" id="knowledgeToListBtn"></button>
-                    <div class="image__container">
-                        <img src="Icons/Knowledge Impediments.png" alt="">
-                    </div>
-                    <div class="image__container_numbers">
-                        <img src="Icons/two.png">
-                    </div>
-                </div>
-                <div class="main__panel__containers container-2">
-                    <p class="container__text">Team Reflection</p>
-                    <img id="infoBtn-3" src="Icons/info.png" class="infoBtn" alt="Info"/>
-                    <ul class="list-inline" id="reflexionList"></ul>
-                    <input type="text" id="reflexionListInput" class="text" placeholder="Team Reflection">
-                    <button class="button" id="reflexionListBtn"></button>
-                    <div class="image__container">
-                        <img src="Icons/Reflexion.png" alt="">
-                    </div>
-                    <div class="image__container_numbers">
-                        <img src="Icons/three.png">
-                    </div>
-                </div>
-                <div class="main__panel__containers container-4">
-                    <p class="container__text">Shared Perspective</p>
-                    <img id="infoBtn-4" src="Icons/info.png" class="infoBtn" alt="Info" />
-                    <ul class="list-inline" id="neuePerspektivenList"></ul>
-                    <input type="text" id="neuePerspektivenListInput" class="text" placeholder="Shared Perspective">
-                    <button class="button" id="neuePerspektivenListBtn"></button>
-                    <div class="image__container">
-                        <img src="Icons/Neue Perspektiven.png" alt="">
-                    </div>
-                    <div class="image__container_numbers">
-                        <img src="Icons/four.png">
-                    </div>
-                </div>
-                <div class="main__panel__containers container-7">
-                    <p class="container__text">Unlearning Vision</p>
-                    <img id="infoBtn-5" src="Icons/info.png" class="infoBtn" alt="Info" />
-                    <ul class="list-inline" id="VisionList"></ul>
-                    <input type="text" id="VisionListInput" class="text" placeholder="Unlearning Vision">
-                    <button class="button" id="VisionListBtn"></button>
-                    <div class="image__container">
-                        <img src="Icons/vision.png" alt="">
-                    </div>
-                    <div class="image__container_numbers">
-                        <img src="Icons/five.png">
-                    </div>
-                </div>
-                <div class="main__panel__containers container-8">
-                    <p class="container__text">Definition of Unlearned</p>
-                    <img id="infoBtn-6" src="Icons/info.png" class="infoBtn" alt="Info" />
-                    <ul class="list-inline" id="definitionOfUnlearnedList"></ul>
-                    <input type="text" id="definitionOfUnlearnedListInput" class="text" placeholder="Definition of Unlearned">
-                    <button class="button" id="definitionOfUnlearnedListBtn"></button>
-                    <div class="image__container">
-                        <img src="Icons/Definition of Unlearned.png" alt="">
-                    </div>
-                    <div class="image__container_numbers">
-                        <img src="Icons/six.png">
-                    </div>
-                </div>
-                <div class="main__panel__containers container-3">
-                    <p class="container__text">Intervention Planning</p>
-                    <img id="infoBtn-7" src="Icons/info.png" class="infoBtn" alt="Info"/>
-                    <ul class="list-inline" id="vorbereitungList"></ul>
-                    <input type="text" id="vorbereitungListInput" class="text" placeholder="Intervention Planning">
-                    <button class="button" id="vorbereitungListBtn"></button>
-                    <div class="image__container">
-                        <img src="Icons/Vorbereitung.png" alt="">
-                    </div>
-                    <div class="image__container_numbers">
-                        <img src="Icons/seven.png">
-                    </div>
-                </div>
-                <div class="main__panel__containers container-6">
-                    <p class="container__text">Action Items</p>
-                    <img id="infoBtn-8" src="Icons/info.png" class="infoBtn" alt="Info" />
-                    <ul class="list-inline" id="actionItemsList"></ul>
-                    <input type="text" id="actionItemsListInput" class="text" placeholder="Action Items">
-                    <button class="button" id="actionItemsListBtn"></button>
-                    <div class="image__container">
-                        <img src="Icons/Action Items.png" alt="">
-                    </div>
-                    <div class="image__container_numbers">
-                        <img src="Icons/eight.png">
-                    </div>
-                </div>
-            </div>
+    <form>
+        <div class="keyInput">
+            <label for="keyCreate">Bitte neues Key erstellen</label>
+            <input type="key" name="keyCreate" id="keyCreate" placeholder="Key"
+                   required/>
         </div>
-        <div class="gap__container">
-            <div class="gap__container-image gap__container-image-2">
-                <img src="Icons/Doodle-Arrow-PNG-1.png" alt="">
-            </div>
-            <div class="gap__container-image gap__container-image-3">
-                <img src="Icons/Doodle-Arrow-PNG-1.png" alt="">
-            </div>
-        </div>
-        <div class="bottom__container">
-            <p class="container__text">Measuring Unlearning</p>
-            <img id="infoBtn-9" src="Icons/info.png" class="infoBtn" alt="Info" />
-            <ul class="list-inline" id="measuringUnlearningItemsList"></ul>
-            <input type="text" id="measuringUnlearningListInput" class="text" placeholder="Measuring Unlearning">
-            <button class="button" id="measuringUnlearningListBtn"></button>
-            <div class="image__container">
-                <img src="Icons/Measuring Unlearning.png" alt="">
-            </div>
-            <div class="image__container_numbers">
-                <img src="Icons/nine.png">
-            </div>
-        </div>
-    </div>
-</div>
+        <div>
+            <a id="createKey" class="button" style="float: left;">Erstellen</a>
 
-<script type="module" src="script.js"></script>
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+            <!--<button type="submit" id="createKey" name="" style="float: left;">Erstellen</button>--><br><br>
+        </div>
+        <br>
+        <div class="keyInput">
+            <label for="keyInput">Bitte Key eingeben</label>
+            <input type="key" name="keyInput" id="keyInput" placeholder="Key"
+                   required/>
+        </div>
+        <div>
+            <a id="loginButton" class="button" style="float: left;">Login</a>
+        </div>
+    </form>
+</main>
+<footer>
+</footer>
 
-<!--script src="webSocket.js"></script-->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@1.34.1/tsparticles.min.js"
+        integrity="sha256-D6LXCdCl4meErhc25yXnxIFUtwR96gPo+GtLYv89VZo=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/register.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+
 </body>
+
 </html>
