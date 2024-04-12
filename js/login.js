@@ -21,6 +21,8 @@ document.getElementById("loginButton").addEventListener("click", async function 
     }
 });
 
+
+
 const checkKey = async (bordKey) => {
     try {
         const response = await fetch(`https://auc-web-q448.onrender.com/api/idea/login/${bordKey}`, {
@@ -46,7 +48,8 @@ const checkKey = async (bordKey) => {
                 // handle other status codes
                 console.log('Error:', response.statusText);
             }
-            showMessage("Key exisitert nicht, bitte richtige eingeben!", "message2");
+            // Assuming showMessage function takes three arguments: message, type, and elementId
+            showMessage("Key existiert nicht, bitte richtig eingeben!", "error", "message2");
 
             return false;
         }
