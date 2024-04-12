@@ -1,19 +1,29 @@
+document.getElementById("keyInput").addEventListener("keypress", async function(event) {
+    // Check if the Enter key is pressed
+    if (event.key === "Enter") {
+        // Prevent the default form submission behavior
+        event.preventDefault();
+        // Call the checkKey function
+        await checkKey(this.value.trim());
+    }
+});
+
+// Add event listener for button click
 document.getElementById("loginButton").addEventListener("click", async function (event) {
-    // Prevent the default behavior of the link click
+    // Prevent the default behavior of the button click
     event.preventDefault();
     // Check if the input field is not empty
     var keyInputValue = document.getElementById("keyInput").value.trim();
     if (keyInputValue !== "") {
         await checkKey(keyInputValue);
-
     } else {
-        alert("Please enter a key.");
+        alert("Bitte Key eingeben.");
     }
 });
 
 const checkKey = async (bordKey) => {
     try {
-        const response = await fetch(`https://auc-web-q448.onrender.com/api/idea/login/${bordKey}`, {
+        const response = await fetch(`http://localhost:8080/api/idea/login/${bordKey}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
