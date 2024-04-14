@@ -203,10 +203,7 @@ function addNewItem(element, list) {
 function addEditDeleteListener(item, canvasBoxId, boardKey) {
     item.addEventListener('click', (event) => {
         const target = event.target;
-        if (target.tagName === 'SPAN' && target.classList.contains('voteCount')) {
-            event.stopPropagation();
-            return;
-        }
+
 
         if (target.tagName === 'SPAN') {
             const spanText = target.textContent;
