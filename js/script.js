@@ -27,7 +27,7 @@ const informations = [
         <p class="MsoNormal" style="font-weight: bold">Leitfragen: <o:p></o:p></p>
         <p></p>
         <ul type="disc">
-            <li class="MsoNormal" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;line-height:normal;mso-list:l0 level1 lfo1;tab-stops:list 36.0pt"><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-font-kerning:0pt;mso-ligatures:none;mso-fareast-language:DE">Welche Wissensstruktur stellen das größte Hindernis für uns als Team dar?<o:p></o:p></span></li>
+            <li class="MsoNormal" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;line-height:normal;mso-list:l0 level1 lfo1;tab-stops:list 36.0pt"><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-font-kerning:0pt;mso-ligatures:none;mso-fareast-language:DE">Welche Wissensstruktur stellt das größte Hindernis für uns als Team dar?<o:p></o:p></span></li>
             <li class="MsoNormal" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;line-height:normal;mso-list:l0 level1 lfo1;tab-stops:list 36.0pt"><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-font-kerning:0pt;mso-ligatures:none;mso-fareast-language:DE">Von welcher Wissensstruktur wollen wir uns als erstens lösen?<o:p></o:p></span></li>
         </ul>`,
 
