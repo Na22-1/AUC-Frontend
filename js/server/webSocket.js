@@ -1,9 +1,11 @@
-import {refresh} from './script.js'
+import {refresh} from '../script.js'
 
 
-const url = 'auc-web-q448.onrender.com';
+//const url = 'auc-web-q448.onrender.com';
+const url = 'localhost:8080';
 
-let ws = new WebSocket('wss://' + url +'/user');
+//let ws = new WebSocket('wss://' + url +'/user');
+let ws = new WebSocket('ws://' + url +'/user');
 
 ws.onmessage = message => {
     let boardKey = message.data;
