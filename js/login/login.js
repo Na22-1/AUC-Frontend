@@ -1,32 +1,34 @@
+const getCurrentDate = () => {
+    const today = new Date();
+    const day = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const year = today.getFullYear();
+    return `${day}${month}${year}`;
+};
+
 document.getElementById("keyInput").addEventListener("keypress", async function(event) {
-    // Check if the Enter key is pressed
     if (event.key === "Enter") {
-        // Prevent the default form submission behavior
         event.preventDefault();
-        // Call the checkKey function
-        await checkKey(this.value.trim());
+        const currentDate = getCurrentDate();
+        await checkKey(this.value.trim(), currentDate);
     }
 });
 
-// Add event listener for button click
+
 document.getElementById("loginButton").addEventListener("click", async function (event) {
-    // Prevent the default behavior of the button click
     event.preventDefault();
-    // Check if the input field is not empty
     var keyInputValue = document.getElementById("keyInput").value.trim();
     if (keyInputValue !== "") {
-        await checkKey(keyInputValue);
+        const currentDate = getCurrentDate();
+        await checkKey(keyInputValue, currentDate);
     } else {
         alert("Bitte Key eingeben.");
     }
 });
 
-
-
-const checkKey = async (bordKey) => {
+const checkKey = async (bordKey, boardDate) => {
     try {
-//        const response = await fetch(`https://auc-web-q448.onrender.com/api/idea/login/${bordKey}`, {
-        const response = await fetch(`http://localhost:8080/api/idea/login/${bordKey}`, {
+        const response = await fetch(`http://localhost:8080/api/idea/login/${bordKey}/${boardDate}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -43,13 +45,10 @@ const checkKey = async (bordKey) => {
             return true;
         } else {
             if (response.status === 404) {
-                // handle 404 Not Found
                 console.log('Board not found');
             } else {
-                // handle other status codes
                 console.log('Error:', response.statusText);
             }
-            // Assuming showMessage function takes three arguments: message, type, and elementId
             showMessage("Key existiert nicht, bitte richtig eingeben!", "error", "message2");
 
             return false;

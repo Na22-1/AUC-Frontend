@@ -1,10 +1,10 @@
-import {insertData, getData, updateData, deleteData} from './server/server.js';
+import {insertData, getData, updateData, deleteData, createNewBoard} from './server/server.js';
 import {onClick} from './server/webSocket.js';
 import {information} from "./board/boardInfo.js";
 
 let key;
 
-function createList(listInputId, addBtnId, listId,  canvasBoxId, data, boardKey, boardName, createDate) {
+function createList(listInputId, addBtnId, listId,  canvasBoxId, data, boardKey, createDate) {
 
     const listInput = document.getElementById(listInputId);
     const addToListBtn = document.getElementById(addBtnId);
@@ -13,7 +13,7 @@ function createList(listInputId, addBtnId, listId,  canvasBoxId, data, boardKey,
     if (data.length !== 0) {
         data.forEach((element) => {
             let createdItem = addNewItem(element, list);
-            addEditDeleteListener(createdItem, canvasBoxId, boardKey, boardName, createDate);
+            addEditDeleteListener(createdItem, canvasBoxId, boardKey, createDate);
         });
     }
     const handleKeypress = (e) => {
@@ -31,7 +31,7 @@ function createList(listInputId, addBtnId, listId,  canvasBoxId, data, boardKey,
         if (newItemText !== '') {
             addToListBtn.disable = true;
 
-            insertData(newItemText, canvasBoxId, boardKey, boardName, createDate)
+            insertData(newItemText, canvasBoxId, boardKey, createDate)
                 .then(responseData => {
                     let createdItem = addNewItem(JSON.parse(responseData.toString()), list);
                     listInput.value = '';
@@ -100,7 +100,7 @@ function addNewItem(element, list) {
     return newItem;
 }
 
-function addEditDeleteListener(item, canvasBoxId, boardKey, boardName, createDate) {
+function addEditDeleteListener(item, canvasBoxId, boardKey, createDate) {
     item.addEventListener('click', (event) => {
         const target = event.target;
 
@@ -119,7 +119,7 @@ function addEditDeleteListener(item, canvasBoxId, boardKey, boardName, createDat
                     item.replaceChild(newSpan, inputField);
 
                     // Update data on the server
-                    updateData(newText, canvasBoxId, itemId, boardKey, boardName, createDate)
+                    updateData(newText, canvasBoxId, itemId, boardKey,  createDate)
                         .then(() => {
                             onClick(key); // Notify websocket
                         })
@@ -204,15 +204,32 @@ function refresh(boardKey) {
 }
 
 function load(boardData, boardKey) {
-    key=boardKey;
-    if (typeof boardData === 'undefined' || boardData === null || boardData.length === 0) {
-        boardData=[];
-        callCreateLists(boardData,boardKey);
+    key = boardKey;
+
+    const createDateInput = document.getElementById('createDate');
+    const date = new Date().toISOString().split('T')[0].replace(/-/g, '');
+    if (createDateInput && !createDateInput.value) {
+        createDateInput.value = date;
+      //  saveCreateDate(); // Save this to localStorage as well
     }
-    else{
-        callCreateLists(boardData,boardKey);
+    //createNewBoard(boardKey, date).then(r => );
+
+    if (typeof boardData === 'undefined' || boardData === null || boardData.length === 0) {
+        boardData = [];
+        callCreateLists(boardData, boardKey, date);
+    } else {
+        callCreateLists(boardData, boardKey, date);
     }
 }
+/*
+function saveCreateDate() {
+    var createDate = document.getElementById('createDate').value.replace(/-/g, '');
+
+    if (createDate) {
+        localStorage.setItem('createDate', createDate);
+    }
+}
+*/
 
 function createInputField(spanText) {
     const inputField = document.createElement('input');
@@ -224,27 +241,61 @@ function createInputField(spanText) {
     return inputField;
 }
 
-function callCreateLists(boardData, boardKey){
+function callCreateLists(boardData, boardKey, boardDate){
+
     createList('knowledgeListInput', 'knowledgeToListBtn', 'knowledgeList',
-        1, boardData.filter((item) => item.canvasBox === 1), boardKey, 'boardName', 'createDate');
+        1, boardData.filter((item) => item.canvasBox === 1), boardKey, boardDate);
     createList('targetingPrioritizationInput', 'targetingPrioritizationBtn', 'targetingPrioritizationList',
-        2, boardData.filter((item) => item.canvasBox === 2), boardKey, 'boardName', 'createDate');
+        2, boardData.filter((item) => item.canvasBox === 2), boardKey,  boardDate);
     createList('teamReflexionListInput', 'teamReflexionListBtn', 'teamReflexionList',
-        3, boardData.filter((item) => item.canvasBox === 3), boardKey, 'boardName', 'createDate');
+        3, boardData.filter((item) => item.canvasBox === 3), boardKey, boardDate);
     createList('sharedPerspectiveListInput', 'sharedPerspectiveListBtn', 'sharedPerspectiveList',
-        4, boardData.filter((item) => item.canvasBox === 4), boardKey, 'boardName', 'createDate');
+        4, boardData.filter((item) => item.canvasBox === 4), boardKey, boardDate);
     createList('unlearningVisionListInput', 'unlearningVisionListBtn', 'unlearningVisionList',
-        5, boardData.filter((item) => item.canvasBox === 5), boardKey, 'boardName', 'createDate');
+        5, boardData.filter((item) => item.canvasBox === 5), boardKey, boardDate);
     createList('definitionOfUnlearnedListInput', 'definitionOfUnlearnedListBtn', 'definitionOfUnlearnedList',
-        6, boardData.filter((item) => item.canvasBox === 6), boardKey, 'boardName', 'createDate');
+        6, boardData.filter((item) => item.canvasBox === 6), boardKey, boardDate);
     createList('interventionPlanningListInput', 'interventionPlanningListBtn', 'interventionPlanningList',
-        7, boardData.filter((item) => item.canvasBox === 7), boardKey, 'boardName', 'createDate');
+        7, boardData.filter((item) => item.canvasBox === 7), boardKey, boardDate);
     createList('actionItemsListInput', 'actionItemsListBtn', 'actionItemsList',
-        8, boardData.filter((item) => item.canvasBox === 8), boardKey, 'boardName', 'createDate');
+        8, boardData.filter((item) => item.canvasBox === 8), boardKey, boardDate);
     createList('measuringUnlearningListInput', 'measuringUnlearningListBtn', 'measuringUnlearningItemsList',
-        9, boardData.filter((item) => item.canvasBox === 9), boardKey, 'boardName', 'createDate');
+        9, boardData.filter((item) => item.canvasBox === 9), boardKey, boardDate);
     createList('feedbackListInput', 'feedbackListBtn', 'feedbackList',
-        10, boardData.filter((item) => item.canvasBox === 10), boardKey, 'boardName', 'createDate');
+        10, boardData.filter((item) => item.canvasBox === 10), boardKey, boardDate);
 }
+document.getElementById('createDateBtn').addEventListener('click', function() {
+    const createDate = document.getElementById('createDate').value;
+    const boardKey = sessionStorage.getItem('bordKey'); // Ensure the key is retrieved
+
+    if (createDate && boardKey) {
+        // Call the server to create a new board
+        createNewBoard(boardKey, createDate)
+            .then(responseData => {
+                console.log('New board created:', responseData);
+                clearListForNewBoard()
+            })
+            .catch(error => {
+                console.error('Error creating board:', error);
+            });
+    }
+});
+
+function clearListForNewBoard() {
+    document.getElementById('feedbackList').innerHTML = '';
+    document.getElementById('knowledgeList').innerHTML = '';
+    document.getElementById('targetingPrioritizationList').innerHTML = '';
+    document.getElementById('teamReflexionList').innerHTML = '';
+    document.getElementById('sharedPerspectiveList').innerHTML = '';
+    document.getElementById('unlearningVisionList').innerHTML = '';
+    document.getElementById('definitionOfUnlearnedList').innerHTML = '';
+    document.getElementById('interventionPlanningList').innerHTML = '';
+    document.getElementById('actionItemsList').innerHTML = '';
+    document.getElementById('measuringUnlearningItemsList').innerHTML = '';
+
+
+}
+
+
 
 export {refresh, load};
