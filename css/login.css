@@ -1,6 +1,6 @@
 *,
 *:before,
-*:after{
+*:after {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -35,7 +35,7 @@ body{
     background-color: #080710;
 }
 
-.background{
+.background {
     width: 500px;
     height: 600px;
     position: absolute;
@@ -43,13 +43,15 @@ body{
     left: 50%;
     top: 50%;
 }
-.background .shape{
-    height: 200px;
-    width: 200px;
+
+.background .shape {
+    height: 250px;
+    width: 250px;
     position: absolute;
     border-radius: 50%;
 }
-.shape:first-child{
+
+.shape:first-child {
     background: linear-gradient(
             #1845ad,
             #23a2f6
@@ -57,7 +59,8 @@ body{
     left: -200px;
     top: -10px;
 }
-.shape:last-child{
+
+.shape:last-child {
     background: linear-gradient(
             to right,
             #6c63ff,
@@ -66,9 +69,10 @@ body{
     right: -350px;
     bottom: -0px;
 }
+
 .form1 {
-    height: 300px;
-    width: 400px;
+    height: 270px;
+    width: 390px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
     transform: translate(-50%,-50%);
@@ -82,8 +86,8 @@ body{
 }
 
 .form2 {
-    height: 300px;
-    width: 400px;
+    height: 270px;
+    width: 390px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
     transform: translate(-50%,-50%);
@@ -96,34 +100,36 @@ body{
     padding: 18px 35px;
 }
 
-form *{
+form * {
     font-family: 'Poppins',sans-serif;
     color: #ffffff;
-    letter-spacing: 0.5px;
+    letter-spacing: 0;
     outline: none;
     border: none;
 }
 
-form h3{
+form h3 {
     font-size: 25px;
     font-weight: 500;
     line-height: 42px;
     text-align: center;
 }
-form h4{
+
+form h4 {
     font-size: 20px;
     font-weight: 500;
     line-height: 42px;
     text-align: center;
 }
 
-label{
+label {
     display: block;
     margin-top: 30px;
     font-size: 16px;
     font-weight: 500;
 }
-input{
+
+input {
     display: block;
     height: 50px;
     width: 100%;
@@ -135,11 +141,11 @@ input{
     font-weight: 3000;
     text-align: center;
 }
-::placeholder{
+::placeholder {
     color: #e5e5e5;
 }
 
-.button{
+.button {
     margin-top: 0;
     margin-left: 80px;
     width: 50%;

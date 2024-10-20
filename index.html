@@ -21,9 +21,8 @@
     <h4> Board erstellen </h4>
     <div id="message1" class="hidden"></div>
     <div class="keyInput">
-        <br>
-        <input type="key" name="keyCreate" id="keyCreate" placeholder="Bitte neues Key erstellen"
-               required/>
+        <label for="keyCreate"></label><input type="text" name="keyCreate" id="keyCreate" placeholder="Bitte neues Key erstellen"
+                                              required/>
         <br>
         <a id="createKey" class="button" style="float: left;">Erstellen</a>
     </div>
@@ -34,15 +33,14 @@
     <h4> Zum Board </h4>
     <div id="message2" class="hidden"></div>
     <div class="keyInput">
-        <br>
-        <input type="key" name="keyInput" id="keyInput" placeholder="Bitte Key eingeben"
-               required/>
+        <label for="keyInput"></label><input type="text" name="keyInput" id="keyInput" placeholder="Bitte Key eingeben"
+                                             required/>
         <br>
         <a id="loginButton" class="button" style="float: left;">Login</a>
     </div>
 
 </form>
 </body>
-<script type="text/javascript" src="js/register.js"></script>
-<script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript" src="js/login/register.js"></script>
+<script type="text/javascript" src="js/login/login.js"></script>
 </html>

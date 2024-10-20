@@ -1,4 +1,6 @@
-const url = 'https://auc-web-q448.onrender.com/'
+//const url = 'https://auc-web-q448.onrender.com/'
+const url = 'http://localhost:8080/';
+
 const handleCreateKey = () => {
     var bordKey = document.getElementById("keyCreate").value.trim();
     if (bordKey !== "") {
@@ -42,11 +44,10 @@ const showMessage = (message, type, messageId) => {
 }
 
 async function insertKey(bordKey) {
-    const response = await fetch(url + `api/idea/create/` + bordKey, {
+    return await fetch(url + `api/idea/create/` + bordKey, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         }
     });
-    return response;
 }

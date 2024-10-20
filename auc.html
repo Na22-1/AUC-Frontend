@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agile Unlearning Canvas</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
 <div id="myModal" class="modal">
@@ -18,8 +21,11 @@
 </div>
 <div class="section">
     <h1 class="section__header">Agile Unlearning Canvas</h1>
-    <img id="infoBtn-0" src="Icons/info.png" class="infoBtn" alt="Info"/>
+    <div class="boardInfoBtn">
 
+        <img id="infoBtn-0" src="Icons/info.png" class="infoBtn" alt="Info"/>
+
+    </div>
     <div class="section__content">
         <div class="section__content-1">
             <div class="left__container">
@@ -28,18 +34,18 @@
                 <br>
                 <ul class="list-inline" id="feedbackList"></ul>
                 <br><br>
-                <input type="text" id="feedbackListInput" class="text" placeholder="Hier Text eingeben">
+                <label for="feedbackListInput"></label><input type="text" id="feedbackListInput" class="text" placeholder="Hier Text eingeben">
                 <button class="button" id="feedbackListBtn"></button>
                 <div class="image__container">
                     <img src="Icons/Feedback.png" alt="">
                 </div>
                 <div class="image__container_numbers">
-                    <img src="Icons/10.png">
+                    <img src="Icons/ten.png" alt="10">
                 </div>
             </div>
             <div class="gap__container">
                 <div class="gap__container-image gap__container-image-1">
-                    <img src="Icons/Doodle-Arrow-PNG-1.png" alt="">
+                    <img src="Icons/Arrow.png" alt="">
                 </div>
             </div>
             <div class="main__panel">
@@ -49,13 +55,13 @@
                     <br>
                     <ul class="list-inline" id="knowledgeList"></ul>
                     <br><br>
-                    <input type="text" id="knowledgelistInput" class="text" placeholder="Hier Text eingeben">
+                    <label for="knowledgeListInput"></label><input type="text" id="knowledgeListInput" class="text" placeholder="Hier Text eingeben">
                     <button class="button" id="knowledgeToListBtn"></button>
                     <div class="image__container">
                         <img src="Icons/Brainstorming.png" alt="">
                     </div>
                     <div class="image__container_numbers">
-                        <img src="Icons/1.png">
+                        <img src="Icons/one.png" alt="1">
                     </div>
                 </div>
 
@@ -65,13 +71,13 @@
                     <br>
                     <ul class="list-inline" id="targetingPrioritizationList"></ul>
                     <br><br>
-                    <input type="text" id="targetingPrioritizationInput" class="text" placeholder="Hier Text eingeben">
+                    <label for="targetingPrioritizationInput"></label><input type="text" id="targetingPrioritizationInput" class="text" placeholder="Hier Text eingeben">
                     <button class="button" id="targetingPrioritizationBtn"></button>
                     <div class="image__container">
-                        <img src="Icons/Knowledge%20Impediments.png" alt="">
+                        <img src="Icons/Knowledge_Impediments.png" alt="">
                     </div>
                     <div class="image__container_numbers">
-                        <img src="Icons/two.png">
+                        <img src="Icons/two.png" alt="2">
                     </div>
                 </div>
                 <div class="main__panel__containers container-2">
@@ -80,13 +86,13 @@
                     <br>
                     <ul class="list-inline" id="teamReflexionList"></ul>
                     <br><br>
-                    <input type="text" id="teamReflexionListInput" class="text" placeholder="Hier Text eingeben">
+                    <label for="teamReflexionListInput"></label><input type="text" id="teamReflexionListInput" class="text" placeholder="Hier Text eingeben">
                     <button class="button" id="teamReflexionListBtn"></button>
                     <div class="image__container">
                         <img src="Icons/Reflexion.png" alt="">
                     </div>
                     <div class="image__container_numbers">
-                        <img src="Icons/three.png">
+                        <img src="Icons/three.png" alt="3">
                     </div>
                 </div>
                 <div class="main__panel__containers container-4">
@@ -95,13 +101,13 @@
                     <br>
                     <ul class="list-inline" id="sharedPerspectiveList"></ul>
                     <br><br>
-                    <input type="text" id="sharedPerspectiveListInput" class="text" placeholder="Hier Text eingeben">
+                    <label for="sharedPerspectiveListInput"></label><input type="text" id="sharedPerspectiveListInput" class="text" placeholder="Hier Text eingeben">
                     <button class="button" id="sharedPerspectiveListBtn"></button>
                     <div class="image__container">
-                        <img src="Icons/Neue%20Perspektiven.png" alt="">
+                        <img src="Icons/Neue_Perspektiven.png" alt="">
                     </div>
                     <div class="image__container_numbers">
-                        <img src="Icons/four.png">
+                        <img src="Icons/four.png" alt="4">
                     </div>
                 </div>
                 <div class="main__panel__containers container-7">
@@ -110,13 +116,13 @@
                     <br>
                     <ul class="list-inline" id="unlearningVisionList"></ul>
                     <br><br>
-                    <input type="text" id="unlearningVisionListInput" class="text" placeholder="Hier Text eingeben">
+                    <label for="unlearningVisionListInput"></label><input type="text" id="unlearningVisionListInput" class="text" placeholder="Hier Text eingeben">
                     <button class="button" id="unlearningVisionListBtn"></button>
                     <div class="image__container">
                         <img src="Icons/vision.png" alt="">
                     </div>
                     <div class="image__container_numbers">
-                        <img src="Icons/five.png">
+                        <img src="Icons/five.png" alt="5">
                     </div>
                 </div>
                 <div class="main__panel__containers container-8">
@@ -125,13 +131,13 @@
                     <br>
                     <ul class="list-inline" id="definitionOfUnlearnedList"></ul>
                     <br><br>
-                    <input type="text" id="definitionOfUnlearnedListInput" class="text" placeholder="Hier Text eingeben">
+                    <label for="definitionOfUnlearnedListInput"></label><input type="text" id="definitionOfUnlearnedListInput" class="text" placeholder="Hier Text eingeben">
                     <button class="button" id="definitionOfUnlearnedListBtn"></button>
                     <div class="image__container">
-                        <img src="Icons/Definition%20of%20Unlearned.png" alt="">
+                        <img src="Icons/Definition_of_Unlearned.png" alt="">
                     </div>
                     <div class="image__container_numbers">
-                        <img src="Icons/six.png">
+                        <img src="Icons/six.png" alt="6">
                     </div>
                 </div>
                 <div class="main__panel__containers container-3">
@@ -140,13 +146,13 @@
                     <br>
                     <ul class="list-inline" id="interventionPlanningList"></ul>
                     <br><br>
-                    <input type="text" id="interventionPlanningListInput" class="text" placeholder="Hier Text eingeben">
+                    <label for="interventionPlanningListInput"></label><input type="text" id="interventionPlanningListInput" class="text" placeholder="Hier Text eingeben">
                     <button class="button" id="interventionPlanningListBtn"></button>
                     <div class="image__container">
                         <img src="Icons/Vorbereitung.png" alt="">
                     </div>
                     <div class="image__container_numbers">
-                        <img src="Icons/seven.png">
+                        <img src="Icons/seven.png" alt="7">
                     </div>
                 </div>
                 <div class="main__panel__containers container-6">
@@ -155,23 +161,23 @@
                     <br>
                     <ul class="list-inline" id="actionItemsList"></ul>
                     <br><br>
-                    <input type="text" id="actionItemsListInput" class="text" placeholder="Hier Text eingeben">
+                    <label for="actionItemsListInput"></label><input type="text" id="actionItemsListInput" class="text" placeholder="Hier Text eingeben">
                     <button class="button" id="actionItemsListBtn"></button>
                     <div class="image__container">
-                        <img src="Icons/Action%20Items.png" alt="">
+                        <img src="Icons/Action_Items.png" alt="">
                     </div>
                     <div class="image__container_numbers">
-                        <img src="Icons/eight.png">
+                        <img src="Icons/eight.png" alt="8">
                     </div>
                 </div>
             </div>
         </div>
         <div class="gap__container">
             <div class="gap__container-image gap__container-image-2">
-                <img src="Icons/Doodle-Arrow-PNG-1.png" alt="">
+                <img src="Icons/Arrow.png" alt="">
             </div>
             <div class="gap__container-image gap__container-image-3">
-                <img src="Icons/Doodle-Arrow-PNG-1.png" alt="">
+                <img src="Icons/Arrow.png" alt="">
             </div>
         </div>
         <div class="bottom__container">
@@ -180,34 +186,32 @@
             <br>
             <ul class="list-inline" id="measuringUnlearningItemsList"></ul>
             <br><br>
-            <input type="text" id="measuringUnlearningListInput" class="text" placeholder="Hier Text eingeben">
+            <label for="measuringUnlearningListInput"></label><input type="text" id="measuringUnlearningListInput" class="text" placeholder="Hier Text eingeben">
             <button class="button" id="measuringUnlearningListBtn"></button>
             <div class="image__container">
-                <img src="Icons/Measuring%20Unlearning.png" alt="">
+                <img src="Icons/Measuring_Unlearning.png" alt="">
             </div>
             <div class="image__container_numbers">
-                <img src="Icons/nine.png">
+                <img src="Icons/nine.png" alt="9">
             </div>
         </div>
-        <br><br>
-        <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span property="dct:title">Agile Unlearning Canvas</span>
-            ist lizenziert unter <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1"
-                                 target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC
-                BY-NC-ND 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
-                                 src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img
-                        style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
-                        src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img
-                        style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
-                        src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img
-                        style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
-                        src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1"></a>
-        </p>
+    </div>
+</div>
+
+<div class="boardInfoContainer">
+    <div class="input-group">
+        <label for="boardName"></label><input type="text" placeholder="Board Name..." class="info-input" id="boardName">
+        <label for="createDate">Create Date:</label>
+        <input type="date" id="createDate" class="date-input" placeholder="">
+        <button class="button" id="createDateBtn">Save Date</button>
     </div>
 </div>
 
 <script type="module" src="js/script.js"></script>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+<script type="module" src="js/datePicker.js"></script>
+
 <script type="module">
     import {load} from './js/script.js';
 
@@ -219,11 +223,11 @@
             window.location.href = "index.html";
         }
         if (boardData.length !== 0) {
-            const data = JSON.parse(boardData);
+            JSON.parse(boardData);
         }
         load(JSON.parse(boardData), boardKey);
     };
-    window.addEventListener('beforeunload', function (event) {
+    window.addEventListener('beforeunload', function () {
         sessionStorage.removeItem('boardData');
         sessionStorage.removeItem('bordKey');
     });
