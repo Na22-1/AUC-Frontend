@@ -44,7 +44,7 @@ function createList(listInputId, addBtnId, listId,  canvasBoxId, data, boardKey,
                 });
         }
     });
-
+/*
     document.addEventListener('DOMContentLoaded', () => {
         const dateInput = document.getElementById('date-input');
         if (dateInput) {
@@ -55,7 +55,7 @@ function createList(listInputId, addBtnId, listId,  canvasBoxId, data, boardKey,
             });
         }
     });
-
+*/
 
     const infoBtns = document.querySelectorAll('.infoBtn');
     if (infoBtns) {
