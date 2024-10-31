@@ -144,4 +144,4 @@ function sendDateToServer(boardKey) {
     xhr.send(JSON.stringify(body)); // Sending JSON data
 }
 */
-export { insertData, deleteData, getData, updateData, createNewBoard, getBoardWithKeyAndDate };
+export { insertData, deleteData, getData, updateData, createNewBoard };
