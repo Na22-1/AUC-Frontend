@@ -44,18 +44,18 @@ function createList(listInputId, addBtnId, listId,  canvasBoxId, data, boardKey,
                 });
         }
     });
-/*
-    document.addEventListener('DOMContentLoaded', () => {
-        const dateInput = document.getElementById('date-input');
-        if (dateInput) {
-            dateInput.addEventListener('change', () => {
-                const date = dateInput.value;
-                const [year, month, day] = date.split('-');
-                dateInput.value = `${day}.${month}.${year}`;
-            });
-        }
-    });
-*/
+    /*
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateInput = document.getElementById('date-input');
+            if (dateInput) {
+                dateInput.addEventListener('change', () => {
+                    const date = dateInput.value;
+                    const [year, month, day] = date.split('-');
+                    dateInput.value = `${day}.${month}.${year}`;
+                });
+            }
+        });
+    */
 
     const infoBtns = document.querySelectorAll('.infoBtn');
     if (infoBtns) {
@@ -83,6 +83,7 @@ function createList(listInputId, addBtnId, listId,  canvasBoxId, data, boardKey,
             });
         })
     }
+
 }
 
 function addNewItem(element, list) {
@@ -207,10 +208,10 @@ function load(boardData, boardKey) {
     key = boardKey;
 
     const createDateInput = document.getElementById('createDate');
-    const date = new Date().toISOString().split('T')[0].replace(/-/g, '');
+    const date = new Date().toISOString().split('T')[0];
     if (createDateInput && !createDateInput.value) {
         createDateInput.value = date;
-      //  saveCreateDate(); // Save this to localStorage as well
+
     }
     //createNewBoard(boardKey, date).then(r => );
 
@@ -221,15 +222,7 @@ function load(boardData, boardKey) {
         callCreateLists(boardData, boardKey, date);
     }
 }
-/*
-function saveCreateDate() {
-    var createDate = document.getElementById('createDate').value.replace(/-/g, '');
 
-    if (createDate) {
-        localStorage.setItem('createDate', createDate);
-    }
-}
-*/
 
 function createInputField(spanText) {
     const inputField = document.createElement('input');
@@ -264,21 +257,29 @@ function callCreateLists(boardData, boardKey, boardDate){
     createList('feedbackListInput', 'feedbackListBtn', 'feedbackList',
         10, boardData.filter((item) => item.canvasBox === 10), boardKey, boardDate);
 }
-document.getElementById('createDateBtn').addEventListener('click', function() {
-    const createDate = document.getElementById('createDate').value;
-    const boardKey = sessionStorage.getItem('bordKey'); // Ensure the key is retrieved
+
+document.getElementById('createDate').addEventListener('change', function() {
+    const createDate = this.value; // Get the selected date
+
+    const boardKey = sessionStorage.getItem('bordKey'); // Retrieve the board key
 
     if (createDate && boardKey) {
-        // Call the server to create a new board
         createNewBoard(boardKey, createDate)
             .then(responseData => {
+
+
+                if (!responseData) {
+                    clearListForNewBoard();
+                }
+                onClick(key);
                 console.log('New board created:', responseData);
-                clearListForNewBoard()
+
             })
             .catch(error => {
                 console.error('Error creating board:', error);
             });
     }
+
 });
 
 function clearListForNewBoard() {
@@ -292,8 +293,6 @@ function clearListForNewBoard() {
     document.getElementById('interventionPlanningList').innerHTML = '';
     document.getElementById('actionItemsList').innerHTML = '';
     document.getElementById('measuringUnlearningItemsList').innerHTML = '';
-
-
 }
 
 

@@ -1,6 +1,6 @@
 const getCurrentDate = () => {
 
-    return new Date().toISOString().split('T')[0].replace(/-/g, '');
+    return new Date().toISOString().split('T')[0];
 };
 
 document.getElementById("keyInput").addEventListener("keypress", async function(event) {

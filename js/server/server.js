@@ -21,8 +21,7 @@ const insertData = (data, canvasBoxId, boardKey, createDate) => {
         var body = {
             canvasBox: canvasBoxId,
             description: data,
-            boardKey_id: boardKey,
-            createDate: createDate
+            boardKey_id: boardKey
         }
         xhr.send(JSON.stringify(body)); // Sending JSON data
     });
@@ -59,7 +58,7 @@ const updateData = (data, canvasBoxId, itemId, boardKey, createDate) => {
 // Fetch AucItems by boardKey
 const getData = (boardKey, createDate, callback) => {
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", `${url}api/idea/${boardKey}/${createDate ? createDate : ''}`, true);
+    xhr.open("GET", `${url}api/idea/${boardKey}/${createDate}`, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -95,26 +94,45 @@ const deleteData = (id) => {
 };
 
 // Create a new board with a specific key,  and createDate
-const createNewBoard = (boardKey, createDate) => {
+const createNewBoard = (boardKey, date) => {
     return new Promise((resolve, reject) => {
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", `${url}api/idea/create/${boardKey}`, true);
+        xhr.open("POST", `${url}api/idea/createNewBoard/${boardKey}/${date}`, true);
         xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.onreadystatechange = function() {
+
+        xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
-                if (xhr.status === 201) { // Check for 201 Created status
-                    resolve(JSON.parse(xhr.responseText)); // Parse and resolve with response data
+                if (xhr.status === 200) {
+                    resolve({ existing: true, data: JSON.parse(xhr.responseText) });
+                } else if (xhr.status === 201) {
+                    resolve({ existing: false, data: [] });
+                } else if (xhr.status === 404) {
+                    console.error("Board not found.");
+                    reject("Board not found.");
                 } else {
-                    reject(xhr.statusText); // Reject with status text
+                    console.error("Failed to create or fetch board:", xhr.statusText);
+                    reject(xhr.statusText);
                 }
             }
         };
-        const body = {
-            boardKey: boardKey,
-            createDate: createDate
-        };
-        xhr.send(JSON.stringify(body));
+        xhr.send(); // Removed JSON.stringify({ date }) since server doesn't expect a body
     });
+};
+
+const getBoardWithKeyAndDate = (boardKey, createDate, callback) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", `${url}api/idea/createNewBoard/${boardKey}/${createDate}`, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                callback(JSON.parse(xhr.responseText));
+            } else {
+                console.log("Failed to fetch data:", xhr.statusText);
+            }
+        }
+    };
+    xhr.send();
 };
 /*
 function sendDateToServer(boardKey) {
@@ -142,4 +160,4 @@ function sendDateToServer(boardKey) {
     xhr.send(JSON.stringify(body)); // Sending JSON data
 }
 */
-export { insertData, deleteData, getData, updateData, createNewBoard };
+export { insertData, deleteData, getData, updateData, createNewBoard, getBoardWithKeyAndDate };
