@@ -1,4 +1,4 @@
-import {insertData, getData, updateData, deleteData, createNewBoard, getBoardWithKeyAndDate} from './server/server.js';
+import {insertData, getData, updateData, deleteData, createNewBoard } from './server/server.js';
 import { onClick } from './server/webSocket.js';
 import { information } from "./board/boardInfo.js";
 

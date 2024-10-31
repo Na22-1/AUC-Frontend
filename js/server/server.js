@@ -118,22 +118,6 @@ const createNewBoard = (boardKey, date) => {
         xhr.send(); // Removed JSON.stringify({ date }) since server doesn't expect a body
     });
 };
-
-const getBoardWithKeyAndDate = (boardKey, createDate) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", `${url}api/idea/createNewBoard/${boardKey}/${createDate}`, true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-
-            } else {
-                console.log("Failed to fetch data:", xhr.statusText);
-            }
-        }
-    };
-    xhr.send();
-};
 /*
 function sendDateToServer(boardKey) {
     // Retrieve createDate from localStorage
