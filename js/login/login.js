@@ -25,7 +25,7 @@ document.getElementById("loginButton").addEventListener("click", async function 
 
 const checkKey = async (bordKey, boardDate) => {
     try {
-        const response = await fetch(`http://localhost:8080/api/idea/login/${bordKey}/${boardDate}`, {
+        const response = await fetch(`https://auc-web-o8ve.onrender.com/api/idea/login/${bordKey}/${boardDate}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
