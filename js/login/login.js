@@ -14,7 +14,7 @@ document.getElementById("keyInput").addEventListener("keypress", async function(
 
 document.getElementById("loginButton").addEventListener("click", async function (event) {
     event.preventDefault();
-    var keyInputValue = document.getElementById("keyInput").value.trim();
+    const keyInputValue = document.getElementById("keyInput").value.trim();
     if (keyInputValue !== "") {
         const currentDate = getCurrentDate();
         await checkKey(keyInputValue, currentDate);

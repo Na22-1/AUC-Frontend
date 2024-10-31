@@ -1,10 +1,11 @@
-import {insertData, getData, updateData, deleteData, createNewBoard} from './server/server.js';
-import {onClick} from './server/webSocket.js';
-import {information} from "./board/boardInfo.js";
+import {insertData, getData, updateData, deleteData, createNewBoard, getBoardWithKeyAndDate} from './server/server.js';
+import { onClick } from './server/webSocket.js';
+import { information } from "./board/boardInfo.js";
 
 let key;
+let date;
 
-function createList(listInputId, addBtnId, listId,  canvasBoxId, data, boardKey, createDate) {
+function createList(listInputId, addBtnId, listId,  canvasBoxId, data, boardKey) {
 
     const listInput = document.getElementById(listInputId);
     const addToListBtn = document.getElementById(addBtnId);
@@ -13,7 +14,7 @@ function createList(listInputId, addBtnId, listId,  canvasBoxId, data, boardKey,
     if (data.length !== 0) {
         data.forEach((element) => {
             let createdItem = addNewItem(element, list);
-            addEditDeleteListener(createdItem, canvasBoxId, boardKey, createDate);
+            addEditDeleteListener(createdItem, canvasBoxId, boardKey);
         });
     }
     const handleKeypress = (e) => {
@@ -31,7 +32,7 @@ function createList(listInputId, addBtnId, listId,  canvasBoxId, data, boardKey,
         if (newItemText !== '') {
             addToListBtn.disable = true;
 
-            insertData(newItemText, canvasBoxId, boardKey, createDate)
+            insertData(newItemText, canvasBoxId, boardKey, date)
                 .then(responseData => {
                     let createdItem = addNewItem(JSON.parse(responseData.toString()), list);
                     listInput.value = '';
@@ -44,24 +45,12 @@ function createList(listInputId, addBtnId, listId,  canvasBoxId, data, boardKey,
                 });
         }
     });
-    /*
-        document.addEventListener('DOMContentLoaded', () => {
-            const dateInput = document.getElementById('date-input');
-            if (dateInput) {
-                dateInput.addEventListener('change', () => {
-                    const date = dateInput.value;
-                    const [year, month, day] = date.split('-');
-                    dateInput.value = `${day}.${month}.${year}`;
-                });
-            }
-        });
-    */
 
     const infoBtns = document.querySelectorAll('.infoBtn');
     if (infoBtns) {
         infoBtns.forEach((element) => {
             element.addEventListener('click', () => {
-                const num = parseInt(element.id.split('-')[1]); // Extract the number after the hyphen
+                const num = parseInt(element.id.split('-')[1]);
                 const modal = document.getElementById("myModal");
                 const span = document.getElementsByClassName("close")[0];
                 const modalContent = document.querySelector(".modal-content p");
@@ -101,8 +90,9 @@ function addNewItem(element, list) {
     return newItem;
 }
 
-function addEditDeleteListener(item, canvasBoxId, boardKey, createDate) {
+function addEditDeleteListener(item, canvasBoxId, boardKey) {
     item.addEventListener('click', (event) => {
+
         const target = event.target;
 
         if (target.tagName === 'SPAN') {
@@ -120,7 +110,7 @@ function addEditDeleteListener(item, canvasBoxId, boardKey, createDate) {
                     item.replaceChild(newSpan, inputField);
 
                     // Update data on the server
-                    updateData(newText, canvasBoxId, itemId, boardKey,  createDate)
+                    updateData(newText, canvasBoxId, itemId, boardKey,  date)
                         .then(() => {
                             onClick(key); // Notify websocket
                         })
@@ -172,7 +162,6 @@ function refresh(boardKey) {
                 const list = document.getElementById(listId);
                 let existingItems = list ? list.getElementsByTagName('li') : [];
 
-                // Update existing items and remove items not present in fetched data
                 Array.from(existingItems).forEach(item => {
                     let input = item.querySelector('input');
                     let span = item.querySelector('span');
@@ -208,13 +197,13 @@ function load(boardData, boardKey) {
     key = boardKey;
 
     const createDateInput = document.getElementById('createDate');
-    const date = new Date().toISOString().split('T')[0];
+    const createDate    = new Date().toISOString().split('T')[0];
     if (createDateInput && !createDateInput.value) {
-        createDateInput.value = date;
+        createDateInput.value = createDate ;
 
     }
+    date = createDate;
     //createNewBoard(boardKey, date).then(r => );
-
     if (typeof boardData === 'undefined' || boardData === null || boardData.length === 0) {
         boardData = [];
         callCreateLists(boardData, boardKey, date);
@@ -234,52 +223,48 @@ function createInputField(spanText) {
     return inputField;
 }
 
-function callCreateLists(boardData, boardKey, boardDate){
+function callCreateLists(boardData, boardKey){
 
     createList('knowledgeListInput', 'knowledgeToListBtn', 'knowledgeList',
-        1, boardData.filter((item) => item.canvasBox === 1), boardKey, boardDate);
+        1, boardData.filter((item) => item.canvasBox === 1), boardKey);
     createList('targetingPrioritizationInput', 'targetingPrioritizationBtn', 'targetingPrioritizationList',
-        2, boardData.filter((item) => item.canvasBox === 2), boardKey,  boardDate);
+        2, boardData.filter((item) => item.canvasBox === 2), boardKey);
     createList('teamReflexionListInput', 'teamReflexionListBtn', 'teamReflexionList',
-        3, boardData.filter((item) => item.canvasBox === 3), boardKey, boardDate);
+        3, boardData.filter((item) => item.canvasBox === 3), boardKey);
     createList('sharedPerspectiveListInput', 'sharedPerspectiveListBtn', 'sharedPerspectiveList',
-        4, boardData.filter((item) => item.canvasBox === 4), boardKey, boardDate);
+        4, boardData.filter((item) => item.canvasBox === 4), boardKey);
     createList('unlearningVisionListInput', 'unlearningVisionListBtn', 'unlearningVisionList',
-        5, boardData.filter((item) => item.canvasBox === 5), boardKey, boardDate);
+        5, boardData.filter((item) => item.canvasBox === 5), boardKey);
     createList('definitionOfUnlearnedListInput', 'definitionOfUnlearnedListBtn', 'definitionOfUnlearnedList',
-        6, boardData.filter((item) => item.canvasBox === 6), boardKey, boardDate);
+        6, boardData.filter((item) => item.canvasBox === 6), boardKey);
     createList('interventionPlanningListInput', 'interventionPlanningListBtn', 'interventionPlanningList',
-        7, boardData.filter((item) => item.canvasBox === 7), boardKey, boardDate);
+        7, boardData.filter((item) => item.canvasBox === 7), boardKey);
     createList('actionItemsListInput', 'actionItemsListBtn', 'actionItemsList',
-        8, boardData.filter((item) => item.canvasBox === 8), boardKey, boardDate);
+        8, boardData.filter((item) => item.canvasBox === 8), boardKey);
     createList('measuringUnlearningListInput', 'measuringUnlearningListBtn', 'measuringUnlearningItemsList',
-        9, boardData.filter((item) => item.canvasBox === 9), boardKey, boardDate);
+        9, boardData.filter((item) => item.canvasBox === 9), boardKey);
     createList('feedbackListInput', 'feedbackListBtn', 'feedbackList',
-        10, boardData.filter((item) => item.canvasBox === 10), boardKey, boardDate);
+        10, boardData.filter((item) => item.canvasBox === 10), boardKey);
 }
 
 document.getElementById('createDate').addEventListener('change', function() {
-    const createDate = this.value; // Get the selected date
+    date = this.value;
+    const boardKey = sessionStorage.getItem('bordKey');
 
-    const boardKey = sessionStorage.getItem('bordKey'); // Retrieve the board key
-
-    if (createDate && boardKey) {
-        createNewBoard(boardKey, createDate)
+    if (date && boardKey) {
+        createNewBoard(boardKey, date)
             .then(responseData => {
+                // Clear existing lists before loading new data
+                clearListForNewBoard();
 
-
-                if (!responseData) {
-                    clearListForNewBoard();
-                }
+                load(responseData.data, boardKey);
                 onClick(key);
-                console.log('New board created:', responseData);
-
+                console.log('New board created with date:', date);
             })
             .catch(error => {
                 console.error('Error creating board:', error);
             });
     }
-
 });
 
 function clearListForNewBoard() {
@@ -297,4 +282,4 @@ function clearListForNewBoard() {
 
 
 
-export {refresh, load};
+export { refresh, load };
