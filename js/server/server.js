@@ -115,7 +115,7 @@ const createNewBoard = (boardKey, date) => {
                 }
             }
         };
-        xhr.send();
+        xhr.send(); // Removed JSON.stringify({ date }) since server doesn't expect a body
     });
 };
 /*
