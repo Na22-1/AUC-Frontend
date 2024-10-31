@@ -4,30 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c73c684f-10e9-4f9e-ac3f-491798eae20b" name="Changes" comment="beauty work">
-      <change afterPath="$PROJECT_DIR$/js/board/boardInfo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/datePicker.js" afterDir="false" />
+    <list default="true" id="c73c684f-10e9-4f9e-ac3f-491798eae20b" name="Changes" comment="Fix method createAucItem">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/Action Items.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/Action_Items.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/Definition of Unlearned.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/Definition_of_Unlearned.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/Doodle-Arrow-PNG-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/Arrow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/Knowledge Impediments.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/Knowledge_Impediments.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/Measuring Unlearning.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/Measuring_Unlearning.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/Neue Perspektiven.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/Neue_Perspektiven.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/one (1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/one.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/one.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/ten.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/ten.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auc.html" beforeDir="false" afterPath="$PROJECT_DIR$/auc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/login/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/login/register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/login/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/login/login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/server/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/webSocket.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/server/webSocket.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,11 +38,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Node.js.server.js.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Refator-Board",
+    "git-widget-placeholder": "set__Board__Date",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/natia/Desktop/AUC/AUC-Frontend/js",
+    "last_opened_file_path": "C:/Users/natia/Desktop/Agile-Unlearning-Canvas/AUC-Frontend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -105,6 +88,11 @@
       <workItem from="1715361016103" duration="37000" />
       <workItem from="1715724544685" duration="70000" />
       <workItem from="1726863391800" duration="572000" />
+      <workItem from="1730046812348" duration="9739000" />
+      <workItem from="1730143923915" duration="8514000" />
+      <workItem from="1730232556493" duration="156000" />
+      <workItem from="1730235658854" duration="1542000" />
+      <workItem from="1730380658135" duration="5574000" />
     </task>
     <task id="LOCAL-00001" summary="beauty work">
       <option name="closed" value="true" />
@@ -122,14 +110,34 @@
       <option name="project" value="LOCAL" />
       <updated>1713345604219</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Fix method createAucItem">
+      <option name="closed" value="true" />
+      <created>1730053985983</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1730053985983</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="beauty work" />
-    <option name="LAST_COMMIT_MESSAGE" value="beauty work" />
+    <MESSAGE value="Fix method createAucItem" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix method createAucItem" />
   </component>
 </project>
