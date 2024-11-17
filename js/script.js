@@ -4,9 +4,6 @@ import {information} from "./board/boardInfo.js";
 
 let key;
 let date;
-let lastBoardKey = null;
-let lastDate = null;
-let dateChangeTimeoutId = null;
 
 function createList(listInputId, addBtnId, listId, canvasBoxId, data, boardKey) {
     const listInput = document.getElementById(listInputId);
@@ -46,6 +43,8 @@ function createList(listInputId, addBtnId, listId, canvasBoxId, data, boardKey) 
                 const responseData = await insertData(newItemText, canvasBoxId, boardKey, date);
                 let createdItem = addNewItem(JSON.parse(responseData.toString()), list);
                 listInput.value = '';
+                onClick(key);
+                addEditDeleteListener(createdItem, canvasBoxId, boardKey);
                 addEditDeleteListener(createdItem, canvasBoxId, boardKey);
             } catch (error) {
                 console.error("Error:", error);
