@@ -1,6 +1,6 @@
-import {insertData, getData, updateData, deleteData, createNewBoard } from './server/server.js';
-import { onClick } from './server/webSocket.js';
-import { information } from "./board/boardInfo.js";
+import {createNewBoard, deleteData, getData, insertData, updateData} from './server/server.js';
+import {onClick} from './server/webSocket.js';
+import {information} from "./board/boardInfo.js";
 
 let key;
 let date;
@@ -72,7 +72,6 @@ function createList(listInputId, addBtnId, listId,  canvasBoxId, data, boardKey)
             });
         })
     }
-
 }
 
 function addNewItem(element, list) {
@@ -107,21 +106,22 @@ function addEditDeleteListener(item, canvasBoxId, boardKey) {
                 if (newText !== '') {
                     const newSpan = document.createElement('span');
                     newSpan.textContent = newText;
-                    item.replaceChild(newSpan, inputField);
 
-                    // Update data on the server
-                    updateData(newText, canvasBoxId, itemId, boardKey,  date)
+                        item.replaceChild(newSpan, inputField);
+
+
+                    updateData(newText, canvasBoxId, itemId, boardKey, date)
                         .then(() => {
-                            onClick(key); // Notify websocket
+                            onClick(key);
                         })
                         .catch((error) => {
                             console.error("Error:", error);
                         });
                 } else {
-                    item.parentNode.removeChild(item); // Remove the whole list item
+                    item.parentNode.removeChild(item);
                     deleteData(itemId)
                         .then(() => {
-                            onClick(key); // Notify websocket
+                            onClick(key);
                         })
                         .catch((error) => {
                             console.error("Error:", error);
@@ -131,21 +131,23 @@ function addEditDeleteListener(item, canvasBoxId, boardKey) {
 
             inputField.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
-                    saveData();
                     inputField.blur();
                 } else if (e.key === 'Escape') {
-                    item.replaceChild(target, inputField);
+                    if (item.contains(inputField)) {
+                        item.replaceChild(target, inputField);
+                    }
                 }
             });
 
             inputField.addEventListener('blur', () => {
-                saveData();
+                if (item.contains(inputField)) {
+                    saveData();
+                }
             });
 
-            item.replaceChild(inputField, target);
-
-            inputField.focus();
-            item.replaceChild(inputField, target);
+            if (item.contains(target)) {
+                item.replaceChild(inputField, target);
+            }
             inputField.focus();
         }
     });
@@ -153,8 +155,10 @@ function addEditDeleteListener(item, canvasBoxId, boardKey) {
 
 function refresh(boardKey) {
     if (boardKey === key) {
-        getData(boardKey, (responseText) => {
-            const fetchedData = JSON.parse(responseText);
+        getData(boardKey, date, (responseText) => {
+            console.log("Response Text: ", responseText); // Check the raw response
+
+            const fetchedData = (typeof responseText === "string") ? JSON.parse(responseText) : responseText;
             const listIds = ['', 'knowledgeList', 'targetingPrioritizationList', 'teamReflexionList', 'sharedPerspectiveList', 'unlearningVisionList', 'definitionOfUnlearnedList', 'interventionPlanningList', 'actionItemsList', 'measuringUnlearningItemsList', 'feedbackList'];
 
             listIds.forEach((listId) => {
@@ -214,13 +218,22 @@ function load(boardData, boardKey) {
 
 
 function createInputField(spanText) {
-    const inputField = document.createElement('input');
-    inputField.type = 'text';
-    inputField.value = spanText;
+    const textArea = document.createElement('textarea');
+    textArea.value = spanText;
+    textArea.classList.add('editable-textarea');
+    const adjustHeight = () => {
+        textArea.style.height = '1.2em';
+        const newHeight = Math.max(1.2, textArea.scrollHeight);
+        textArea.style.height = newHeight + 'px';
+    };
 
-    inputField.style.backgroundColor = 'transparent';
-    inputField.style.border = 'none';
-    return inputField;
+    textArea.addEventListener('input', adjustHeight);
+    textArea.addEventListener('focus', adjustHeight);
+
+    setTimeout(adjustHeight, 0);
+
+    textArea.focus();
+    return textArea;
 }
 
 function callCreateLists(boardData, boardKey){

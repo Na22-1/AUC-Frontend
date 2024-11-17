@@ -2,16 +2,13 @@ const url = 'https://auc-web-o8ve.onrender.com/'
 //const url = 'http://localhost:8080/';
 
 const handleCreateKey = () => {
-    var bordKey = document.getElementById("keyCreate").value.trim();
+    const bordKey = document.getElementById("keyCreate").value.trim();
     if (bordKey !== "") {
         insertKey(bordKey)
             .then(response => {
                 if (response.ok) {
-                    // handle successful response
                     showMessage("Key wurde erstellt", "success", "message1");
-                    // perform any additional checks or actions here
                 } else {
-                    // handle error response
                     showMessage("Key existiert schon, bitte nochmal versuchen!", "error", "message1");
                 }
             })
@@ -35,7 +32,7 @@ document.getElementById("keyCreate").addEventListener('keypress', function (even
 });
 
 const showMessage = (message, type, messageId) => {
-    var messageElement = document.getElementById(messageId);
+    const messageElement = document.getElementById(messageId);
     messageElement.innerText = message;
     messageElement.className = `visible ${type}`;
     setTimeout(() => {
