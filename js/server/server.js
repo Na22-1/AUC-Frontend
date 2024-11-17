@@ -61,9 +61,9 @@ const getData = (boardKey, createDate, callback) => {
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
-                callback(JSON.parse(xhr.responseText));
+                callback(xhr.responseText);
             } else {
-                console.log("Failed to fetch data:", xhr.statusText);
+                console.log("Failed to fetch data");
             }
         }
     };
