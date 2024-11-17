@@ -28,6 +28,11 @@
     width: 50%;
 }
 
+.modal-content li {
+    margin: 5px 15px;
+    list-style-type: disc;
+}
+
 .close {
     color: #aaa;
     float: right;
