@@ -61,9 +61,9 @@ const getData = (boardKey, createDate, callback) => {
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
-                callback(xhr.responseText);
+                callback(JSON.parse(xhr.responseText));
             } else {
-                console.log("Failed to fetch data");
+                console.log("Failed to fetch data:", xhr.statusText);
             }
         }
     };
@@ -100,6 +100,8 @@ const createNewBoard = (boardKey, date) => {
 
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
+                console.log(`Response status: ${xhr.status}`);
+                console.log(`Response text: ${xhr.responseText}`);
                 if (xhr.status === 200) {
                     resolve({ existing: true, data: JSON.parse(xhr.responseText) });
                 } else if (xhr.status === 201) {
@@ -113,7 +115,13 @@ const createNewBoard = (boardKey, date) => {
                 }
             }
         };
-        xhr.send();
+
+        xhr.onerror = function () {
+            console.error("Network error occurred.");
+            reject("Network error occurred.");
+        };
+
+        xhr.send(); // No body payload
     });
 };
 

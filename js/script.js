@@ -4,19 +4,31 @@ import {information} from "./board/boardInfo.js";
 
 let key;
 let date;
+let lastBoardKey = null;
+let lastDate = null;
+let dateChangeTimeoutId = null;
 
-function createList(listInputId, addBtnId, listId,  canvasBoxId, data, boardKey) {
-
+function createList(listInputId, addBtnId, listId, canvasBoxId, data, boardKey) {
     const listInput = document.getElementById(listInputId);
     const addToListBtn = document.getElementById(addBtnId);
     const list = document.getElementById(listId);
 
+    // Clear existing items first
+    list.innerHTML = '';
+
+    // Add existing data
     if (data.length !== 0) {
         data.forEach((element) => {
             let createdItem = addNewItem(element, list);
             addEditDeleteListener(createdItem, canvasBoxId, boardKey);
         });
     }
+
+    listInput.removeEventListener('keypress', listInput._keypressHandler);
+    addToListBtn.removeEventListener('click', addToListBtn._clickHandler);
+
+
+    // Create a named function for the keypress handler
     const handleKeypress = (e) => {
         if (e.key === 'Enter') {
             addToListBtn.click();
@@ -25,27 +37,36 @@ function createList(listInputId, addBtnId, listId,  canvasBoxId, data, boardKey)
             }
         }
     };
-    listInput.addEventListener('keypress', handleKeypress);
 
-    addToListBtn.addEventListener('click', function () {
+    const handleAddClick = async () => {
         const newItemText = listInput.value.trim();
         if (newItemText !== '') {
-            addToListBtn.disable = true;
-
-            insertData(newItemText, canvasBoxId, boardKey, date)
-                .then(responseData => {
-                    let createdItem = addNewItem(JSON.parse(responseData.toString()), list);
-                    listInput.value = '';
-                    addEditDeleteListener(createdItem, canvasBoxId);
-                    addToListBtn.disable = false;
-                    onClick(key);
-                })
-                .catch(error => {
-                    console.error("Error:", error);
-                });
+            try {
+                addToListBtn.disabled = true;
+                const responseData = await insertData(newItemText, canvasBoxId, boardKey, date);
+                let createdItem = addNewItem(JSON.parse(responseData.toString()), list);
+                listInput.value = '';
+                addEditDeleteListener(createdItem, canvasBoxId, boardKey);
+            } catch (error) {
+                console.error("Error:", error);
+            } finally {
+                addToListBtn.disabled = false;
+            }
         }
-    });
+    };
 
+    listInput._keypressHandler = handleKeypress;
+    addToListBtn._clickHandler = handleAddClick;
+
+    // Remove any existing listeners before adding new ones
+    listInput.removeEventListener('keypress', listInput._keypressHandler);
+    addToListBtn.removeEventListener('click', addToListBtn._clickHandler);
+
+    // Add new listeners
+    listInput.addEventListener('keypress', listInput._keypressHandler);
+    addToListBtn.addEventListener('click', addToListBtn._clickHandler);
+
+    // Add modal logic for info buttons
     const infoBtns = document.querySelectorAll('.infoBtn');
     if (infoBtns) {
         infoBtns.forEach((element) => {
@@ -56,21 +77,19 @@ function createList(listInputId, addBtnId, listId,  canvasBoxId, data, boardKey)
                 const modalContent = document.querySelector(".modal-content p");
                 modalContent.innerHTML = information[num];
 
-                element.onclick = () => {
-                    modal.style.display = "block";
-                }
+                modal.style.display = "block";
 
                 span.onclick = () => {
                     modal.style.display = "none";
-                }
+                };
 
                 window.onclick = (event) => {
                     if (event.target === modal) {
                         modal.style.display = "none";
                     }
-                }
+                };
             });
-        })
+        });
     }
 }
 
@@ -85,15 +104,12 @@ function addNewItem(element, list) {
     newItem.appendChild(span);
     newItem.appendChild(hiddenInput);
     list.appendChild(newItem);
-
     return newItem;
 }
 
 function addEditDeleteListener(item, canvasBoxId, boardKey) {
     item.addEventListener('click', (event) => {
-
         const target = event.target;
-
         if (target.tagName === 'SPAN') {
             const spanText = target.textContent;
             const inputField = createInputField(spanText);
@@ -106,26 +122,16 @@ function addEditDeleteListener(item, canvasBoxId, boardKey) {
                 if (newText !== '') {
                     const newSpan = document.createElement('span');
                     newSpan.textContent = newText;
-
-                        item.replaceChild(newSpan, inputField);
-
+                    item.replaceChild(newSpan, inputField);
 
                     updateData(newText, canvasBoxId, itemId, boardKey, date)
-                        .then(() => {
-                            onClick(key);
-                        })
-                        .catch((error) => {
-                            console.error("Error:", error);
-                        });
+                        .then(() => onClick(key))
+                        .catch((error) => console.error("Error:", error));
                 } else {
                     item.parentNode.removeChild(item);
                     deleteData(itemId)
-                        .then(() => {
-                            onClick(key);
-                        })
-                        .catch((error) => {
-                            console.error("Error:", error);
-                        });
+                        .then(() => onClick(key))
+                        .catch((error) => console.error("Error:", error));
                 }
             };
 
@@ -139,11 +145,7 @@ function addEditDeleteListener(item, canvasBoxId, boardKey) {
                 }
             });
 
-            inputField.addEventListener('blur', () => {
-                if (item.contains(inputField)) {
-                    saveData();
-                }
-            });
+            inputField.addEventListener('blur', saveData);
 
             if (item.contains(target)) {
                 item.replaceChild(inputField, target);
@@ -196,43 +198,52 @@ function refresh(boardKey) {
         });
     }
 }
+document.getElementById('createDate').addEventListener('change', function() {
+    date = this.value;
+    const boardKey = sessionStorage.getItem('bordKey');
+
+    if (date && boardKey) {
+        createNewBoard(boardKey, date)
+            .then(responseData => {
+                // Clear existing lists before loading new data
+                clearListForNewBoard();
+
+                load(responseData.data, boardKey);
+                onClick(key);
+                console.log('New board created with date:', date);
+            })
+            .catch(error => {
+                console.error('Error creating board:', error);
+            });
+    }
+});
+
 
 function load(boardData, boardKey) {
     key = boardKey;
 
     const createDateInput = document.getElementById('createDate');
-    const createDate    = new Date().toISOString().split('T')[0];
+    const currentDate = new Date().toISOString().split('T')[0];
+
     if (createDateInput && !createDateInput.value) {
-        createDateInput.value = createDate ;
+        createDateInput.value = currentDate;
+    }
+    date = createDateInput.value;
 
-    }
-    date = createDate;
-    //createNewBoard(boardKey, date).then(r => );
-    if (typeof boardData === 'undefined' || boardData === null || boardData.length === 0) {
-        boardData = [];
-        callCreateLists(boardData, boardKey, date);
-    } else {
-        callCreateLists(boardData, boardKey, date);
-    }
+    callCreateLists(boardData || [], boardKey);
 }
-
 
 function createInputField(spanText) {
     const textArea = document.createElement('textarea');
     textArea.value = spanText;
     textArea.classList.add('editable-textarea');
-    const adjustHeight = () => {
-        textArea.style.height = '1.2em';
-        const newHeight = Math.max(1.2, textArea.scrollHeight);
-        textArea.style.height = newHeight + 'px';
-    };
+    textArea.style.height = '1.2em';
 
-    textArea.addEventListener('input', adjustHeight);
-    textArea.addEventListener('focus', adjustHeight);
+    textArea.addEventListener('input', () => {
+        textArea.style.height = 'auto';
+        textArea.style.height = textArea.scrollHeight + 'px';
+    });
 
-    setTimeout(adjustHeight, 0);
-
-    textArea.focus();
     return textArea;
 }
 
@@ -260,39 +271,18 @@ function callCreateLists(boardData, boardKey){
         10, boardData.filter((item) => item.canvasBox === 10), boardKey);
 }
 
-document.getElementById('createDate').addEventListener('change', function() {
-    date = this.value;
-    const boardKey = sessionStorage.getItem('bordKey');
-
-    if (date && boardKey) {
-        createNewBoard(boardKey, date)
-            .then(responseData => {
-                // Clear existing lists before loading new data
-                clearListForNewBoard();
-
-                load(responseData.data, boardKey);
-                onClick(key);
-                console.log('New board created with date:', date);
-            })
-            .catch(error => {
-                console.error('Error creating board:', error);
-            });
-    }
-});
-
 function clearListForNewBoard() {
-    document.getElementById('feedbackList').innerHTML = '';
-    document.getElementById('knowledgeList').innerHTML = '';
-    document.getElementById('targetingPrioritizationList').innerHTML = '';
-    document.getElementById('teamReflexionList').innerHTML = '';
-    document.getElementById('sharedPerspectiveList').innerHTML = '';
-    document.getElementById('unlearningVisionList').innerHTML = '';
-    document.getElementById('definitionOfUnlearnedList').innerHTML = '';
-    document.getElementById('interventionPlanningList').innerHTML = '';
-    document.getElementById('actionItemsList').innerHTML = '';
-    document.getElementById('measuringUnlearningItemsList').innerHTML = '';
+    const listIds = [
+        'knowledgeList', 'targetingPrioritizationList', 'teamReflexionList',
+        'sharedPerspectiveList', 'unlearningVisionList', 'definitionOfUnlearnedList',
+        'interventionPlanningList', 'actionItemsList', 'measuringUnlearningItemsList',
+        'feedbackList'
+    ];
+
+    listIds.forEach(listId => {
+        const list = document.getElementById(listId);
+        if (list) list.innerHTML = '';
+    });
 }
-
-
 
 export { refresh, load };
