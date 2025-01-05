@@ -4,12 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c73c684f-10e9-4f9e-ac3f-491798eae20b" name="Changes" comment="Fix method createAucItem">
+    <list default="true" id="c73c684f-10e9-4f9e-ac3f-491798eae20b" name="Changes" comment="Fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/Action_Items.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/Action_Items.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/Definition_of_Unlearned.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/Definition_of_Unlearned.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/Feedback.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/Feedback.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/Knowledge_Impediments.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/Measuring_Unlearning.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/Neue_Perspektiven.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/Neue_Perspektiven.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/Reflexion.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/Reflexion.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/Vorbereitung.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/eight.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/eight.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/five.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/five.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/four.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/four.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/nine.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/nine.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/one.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/one.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/seven.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/seven.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/six.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/six.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/ten.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/three.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/three.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/two.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/two.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/vision.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/zero.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/auc.html" beforeDir="false" afterPath="$PROJECT_DIR$/auc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/login/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/login/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/server/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/board/boardInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/board/boardInfo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +62,7 @@
     "Node.js.server.js.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "set__Board__Date",
+    "git-widget-placeholder": "update-design",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/natia/Desktop/Agile-Unlearning-Canvas/AUC-Frontend",
     "node.js.detected.package.eslint": "true",
@@ -93,6 +114,12 @@
       <workItem from="1730232556493" duration="156000" />
       <workItem from="1730235658854" duration="1542000" />
       <workItem from="1730380658135" duration="5574000" />
+      <workItem from="1731846358931" duration="21942000" />
+      <workItem from="1731882900578" duration="501000" />
+      <workItem from="1733655841531" duration="42000" />
+      <workItem from="1735993927259" duration="3610000" />
+      <workItem from="1736071651901" duration="1196000" />
+      <workItem from="1736102742418" duration="7210000" />
     </task>
     <task id="LOCAL-00001" summary="beauty work">
       <option name="closed" value="true" />
@@ -118,11 +145,62 @@
       <option name="project" value="LOCAL" />
       <updated>1730053985983</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fixes">
+      <option name="closed" value="true" />
+      <created>1731859854604</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1731859854604</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Fixes">
+      <option name="closed" value="true" />
+      <created>1731874977235</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1731874977235</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Fixes">
+      <option name="closed" value="true" />
+      <created>1731875702494</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1731875702494</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Fixes">
+      <option name="closed" value="true" />
+      <created>1731882620054</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1731882620054</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Fixes">
+      <option name="closed" value="true" />
+      <created>1731883107076</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1731883107076</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -138,6 +216,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="beauty work" />
     <MESSAGE value="Fix method createAucItem" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix method createAucItem" />
+    <MESSAGE value="Fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixes" />
   </component>
 </project>
