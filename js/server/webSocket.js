@@ -1,7 +1,7 @@
 import {refresh} from '../script.js'
 
 
-const url = 'auc-web-o8ve.onrender.com';
+const url = 'www.unlearningsupport.de';
 //const url = 'localhost:8080';
 
 let ws = new WebSocket('wss://' + url +'/user');
