@@ -5,32 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c73c684f-10e9-4f9e-ac3f-491798eae20b" name="Changes" comment="Fixes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/Action_Items.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/Action_Items.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/Definition_of_Unlearned.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/Definition_of_Unlearned.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/Feedback.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/Feedback.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/Knowledge_Impediments.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/Measuring_Unlearning.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/Neue_Perspektiven.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/Neue_Perspektiven.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/Reflexion.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/Reflexion.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/Vorbereitung.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/eight.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/eight.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/five.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/five.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/four.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/four.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/nine.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/nine.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/one.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/one.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/seven.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/seven.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/six.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/six.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/ten.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/three.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/three.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/two.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/two.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/vision.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/zero.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/auc.html" beforeDir="false" afterPath="$PROJECT_DIR$/auc.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/board/boardInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/board/boardInfo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,22 +32,22 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Node.js.server.js.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "update-design",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/natia/Desktop/Agile-Unlearning-Canvas/AUC-Frontend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Node.js.server.js.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;update-design&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/natia/Desktop/Agile-Unlearning-Canvas/AUC-Frontend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\natia\Desktop\AUC\AUC-Frontend\js" />
