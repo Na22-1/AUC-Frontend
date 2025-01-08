@@ -1,4 +1,4 @@
-const url = 'https://auc-web-o8ve.onrender.com/';
+const url = 'https://www.unlearningsupport.de/';
 //const url = 'http://localhost:8080/';
 
 
