@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
 .button {
     display: none;
 }
@@ -60,8 +64,8 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     cursor: pointer;
 }
 
@@ -76,6 +80,7 @@
     padding: 10px 40px;
     border-radius: 0.5rem;
     width: 100%;
+    font-family: 'Roboto', sans-serif;
 }
 
 .input-group {
@@ -93,7 +98,6 @@
     border-bottom: 1px solid #ccc;
     width: 95%;
     font-size: inherit;
-    font-family: Times New Roman, serif;
     outline: none;
     padding: 2px 4px;
     box-sizing: border-box;
@@ -154,6 +158,7 @@ ul.list-inline li {
 .info-input {
     flex: 1;
     text-align: center;
+    font-family: 'Roboto', sans-serif;
 }
 
 .section__content {
@@ -250,12 +255,12 @@ ul.list-inline li {
 
 .container__text {
     text-align: center;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .image__container {
     position: absolute;
-    right: 0;
+    right: 2px;
     bottom: 0;
 }
 
