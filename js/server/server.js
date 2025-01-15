@@ -118,7 +118,6 @@ const createNewBoard = (boardKey, date) => {
 
         xhr.onerror = function () {
             console.error("Network error occurred.");
-            reject("Network error occurred.");
         };
 
         xhr.send(); // No body payload

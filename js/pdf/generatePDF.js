@@ -12,10 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             const element = document.getElementById('content-to-print');
 
-
             const opt = {
                 margin: 0,
-                filename: 'Retrospective mit AUC.pdf',
+                filename: `Retrospective mit AUC - ${getCurrentDate()}.pdf`,
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: {
                     scale: 2,
@@ -40,3 +39,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+const getCurrentDate = () => {
+    const today = new Date();
+    const day = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const year = today.getFullYear();
+    return `${day}.${month}.${year}`;
+}

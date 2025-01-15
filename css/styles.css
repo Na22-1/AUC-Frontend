@@ -69,7 +69,7 @@ body {
 }
 
 .boardInfoBtn {
-    position: fixed;
+    position: absolute;
     top: 19px;
     right: 49px;
     z-index: 1000;
