@@ -3,10 +3,8 @@
 <head>
     <title>Agile Unlearning Canvas</title>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <!--Stylesheet-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap">
     <link href="./css/login.css" rel="stylesheet"/>
     <link rel="icon" href="./icons/auc.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,25 +15,25 @@
     <div class="shape"></div>
 </div>
 
-<form class="form1">
+<form class="register-form">
     <h3>Agile Unlearning Canvas</h3>
     <h4> Board erstellen </h4>
-    <div id="message1" class="hidden"></div>
+    <div id="register-message" class="hidden"></div>
     <div class="keyInput">
-        <label for="keyCreate"></label><input type="text" name="keyCreate" id="keyCreate" placeholder="Bitte neues Key erstellen"
-                                              required/>
+        <label for="keyCreate"></label>
+        <input type="text" name="keyCreate" id="keyCreate" placeholder="Bitte neues Key erstellen" required/>
         <br>
         <a id="createKey" class="button" style="float: left;">Erstellen</a>
     </div>
 
 </form>
-<form class="form2">
+<form class="login-form">
     <h3>Agile Unlearning Canvas</h3>
     <h4> Zum Board </h4>
-    <div id="message2" class="hidden"></div>
+    <div id="login-message" class="hidden"></div>
     <div class="keyInput">
-        <label for="keyInput"></label><input type="text" name="keyInput" id="keyInput" placeholder="Bitte Key eingeben"
-                                             required/>
+        <label for="keyInput"></label>
+        <input type="text" name="keyInput" id="keyInput" placeholder="Bitte Key eingeben" required/>
         <br>
         <a id="loginButton" class="button" style="float: left;">Login</a>
     </div>

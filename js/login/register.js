@@ -7,15 +7,15 @@ const handleCreateKey = () => {
         insertKey(bordKey)
             .then(response => {
                 if (response.ok) {
-                    showMessage("Key wurde erstellt", "success", "message1");
+                    showMessage("Key wurde erstellt", "success", "register-message");
                 } else {
-                    showMessage("Key existiert schon, bitte nochmal versuchen!", "error", "message1");
+                    showMessage("Key existiert schon, bitte nochmal versuchen!", "error", "register-message");
                 }
             })
             .catch(error => {
                 // handle any errors that occurred during the fetch request
                 console.error(error);
-                showMessage("Ein Fehler ist aufgetreten, bitte erneut versuchen.", "error", "message1");
+                showMessage("Ein Fehler ist aufgetreten, bitte erneut versuchen.", "error", "register-message");
             });
     } else {
         alert("Bitte Key eingeben.");

@@ -47,7 +47,7 @@ const checkKey = async (bordKey, boardDate) => {
             } else {
                 console.log('Error:', response.statusText);
             }
-            showMessage("Key existiert nicht, bitte richtig eingeben!", "error", "message2");
+            showMessage("Key existiert nicht, bitte richtig eingeben!", "error", "login-message");
 
             return false;
         }

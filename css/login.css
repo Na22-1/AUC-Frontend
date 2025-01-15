@@ -69,7 +69,7 @@ body {
     bottom: -10px;
 }
 
-.form1, .form2 {
+.register-form, .login-form {
     width: 90%;
     max-width: 390px;
     background-color: rgba(255,255,255,0.13);
@@ -152,19 +152,19 @@ input {
         padding: 0;
     }
 
-    .form1, .form2 {
+    .register-form, .login-form {
         position: absolute;
         width: 390px;
         height: 270px;
     }
 
-    .form1 {
+    .register-form {
         transform: translate(-50%, -50%);
         top: 50%;
         left: 40%;
     }
 
-    .form2 {
+    .login-form {
         transform: translate(-50%, -50%);
         top: 50%;
         left: 70%;
@@ -178,14 +178,13 @@ input {
     }
 }
 
-/* For tablets and smaller devices */
 @media screen and (max-width: 768px) {
-    .form1, .form2 {
+    .register-form, .login-form {
         position: static;
         transform: none;
-        width: 90%; /* Make them responsive */
-        margin: 20px auto; /* Center them vertically with spacing */
-        height: auto; /* Adjust the height dynamically */
+        width: 90%;
+        margin: 20px auto;
+        height: auto;
     }
 
     .button {
@@ -194,9 +193,8 @@ input {
     }
 }
 
-/* For very small screens */
 @media screen and (max-width: 360px) {
-    .form1, .form2 {
+    .register-form, .login-form {
         padding: 15px;
     }
 

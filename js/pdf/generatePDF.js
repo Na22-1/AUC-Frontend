@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const opt = {
                 margin: 0,
-                filename: `Retrospective mit AUC - ${getCurrentDate()}.pdf`,
+//                filename: `Retrospective mit AUC - ${getCurrentDate()}.pdf`,
+                filename: `Retrospective mit AUC.pdf`,
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: {
                     scale: 2,
