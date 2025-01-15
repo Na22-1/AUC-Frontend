@@ -28,21 +28,26 @@
 .error {
     background-color: rgba(155, 10, 10, 0.53);
     font-size: 13px;
-
 }
 
-body{
+body {
     background-color: #080710;
     font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
 .background {
-    width: 500px;
-    height: 600px;
-    position: absolute;
-    transform: translate(-50%,-50%);
-    left: 50%;
-    top: 50%;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 
 .background .shape {
@@ -53,52 +58,31 @@ body{
 }
 
 .shape:first-child {
-    background: linear-gradient(
-            #1845ad,
-            #23a2f6
-    );
-    left: -200px;
+    background: linear-gradient(#1845ad, #23a2f6);
+    left: -100px;
     top: -10px;
 }
 
 .shape:last-child {
-    background: linear-gradient(
-            to right,
-            #6c63ff,
-            #ff636c
-    );
-    right: -350px;
-    bottom: -0px;
+    background: linear-gradient(to right, #6c63ff, #ff636c);
+    right: -100px;
+    bottom: -10px;
 }
 
-.form1 {
-    height: 270px;
-    width: 390px;
+.form1, .form2 {
+    width: 90%;
+    max-width: 390px;
     background-color: rgba(255,255,255,0.13);
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 50%;
-    left: 40%;
     border-radius: 10px;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 18px 35px;
-}
-
-.form2 {
-    height: 270px;
-    width: 390px;
-    background-color: rgba(255,255,255,0.13);
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 50%;
-    left: 70%;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(8,7,16,0.6);
-    padding: 18px 35px;
+    margin: 20px auto;
+    position: relative;
+    transform: none;
+    left: auto;
+    top: auto;
 }
 
 form * {
@@ -110,23 +94,23 @@ form * {
 }
 
 form h3 {
-    font-size: 25px;
+    font-size: clamp(20px, 5vw, 25px);
     font-weight: 500;
-    line-height: 42px;
+    line-height: 1.5;
     text-align: center;
 }
 
 form h4 {
-    font-size: 20px;
+    font-size: clamp(16px, 4vw, 20px);
     font-weight: 500;
-    line-height: 42px;
+    line-height: 1.5;
     text-align: center;
 }
 
 label {
     display: block;
-    margin-top: 30px;
-    font-size: 16px;
+    margin-top: 20px;
+    font-size: clamp(14px, 3.5vw, 16px);
     font-weight: 500;
 }
 
@@ -138,24 +122,89 @@ input {
     border-radius: 10px;
     padding: 0 10px;
     margin-top: 8px;
-    font-size: 14px;
-    font-weight: 3000;
+    font-size: clamp(12px, 3vw, 14px);
+    font-weight: 300;
     text-align: center;
 }
+
 ::placeholder {
     color: #e5e5e5;
 }
 
 .button {
-    margin-top: 0;
-    margin-left: 80px;
-    width: 50%;
+    margin: 20px auto 0;
+    width: 80%;
+    max-width: 200px;
     background-color: #ffffff;
     color: #080710;
     padding: 10px;
-    font-size: 15px;
+    font-size: clamp(14px, 3.5vw, 15px);
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
     text-align: center;
+    display: block;
+}
+
+/* Media Queries */
+@media screen and (min-width: 768px) {
+    body {
+        padding: 0;
+    }
+
+    .form1, .form2 {
+        position: absolute;
+        width: 390px;
+        height: 270px;
+    }
+
+    .form1 {
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 40%;
+    }
+
+    .form2 {
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 70%;
+    }
+
+    .button {
+        margin-top: 0;
+        margin-left: 80px;
+        width: 50%;
+        text-align: center;
+    }
+}
+
+/* For tablets and smaller devices */
+@media screen and (max-width: 768px) {
+    .form1, .form2 {
+        position: static;
+        transform: none;
+        width: 90%; /* Make them responsive */
+        margin: 20px auto; /* Center them vertically with spacing */
+        height: auto; /* Adjust the height dynamically */
+    }
+
+    .button {
+        margin: 20px auto 0;
+        width: 80%;
+    }
+}
+
+/* For very small screens */
+@media screen and (max-width: 360px) {
+    .form1, .form2 {
+        padding: 15px;
+    }
+
+    input {
+        height: 40px;
+    }
+
+    .button {
+        padding: 8px;
+    }
 }
