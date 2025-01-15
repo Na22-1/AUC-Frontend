@@ -12,9 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             const element = document.getElementById('content-to-print');
 
-            if (!element) {
-                throw new Error('Content element not found');
-            }
 
             const opt = {
                 margin: 0,  // Remove margins
