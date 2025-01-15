@@ -14,15 +14,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
             const opt = {
-                margin: 0,  // Remove margins
-                filename: 'webpage.pdf',
+                margin: 0,
+                filename: 'Retrospective mit AUC.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: {
                     scale: 2,
                     scrollY: 0,
                     scrollX: 0,
-
-
                 },
                 jsPDF: {
                     unit: 'mm',
