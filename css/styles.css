@@ -51,16 +51,15 @@ body {
     transform: translateX(-50%);
     border: none;
     border-bottom: 1px solid black;
-    padding: 0;
     background: transparent;
     width: 55%;
-    margin-right: 10px;
     font-size: inherit;
     text-align: center;
     outline: none;
 }
 
 .infoBtn {
+    display: flex;
     position: absolute;
     top: 10px;
     right: 10px;
@@ -70,26 +69,10 @@ body {
 }
 
 .boardInfoBtn {
-    position: absolute;
+    position: fixed;
     top: 19px;
     right: 49px;
-}
-
-.boardInfoContainer {
-    background-color: #ffffff;
-    padding: 10px 40px;
-    border-radius: 0.5rem;
-    width: 100%;
-    font-family: 'Roboto', sans-serif;
-}
-
-.input-group {
-    display: flex;
-    align-items: center;
-    border-top: 1px solid #d1d5db;
-    border-bottom: 1px solid #d1d5db;
-    padding: 1rem 0;
-    gap: 1rem;
+    z-index: 1000;
 }
 
 .editable-textarea {
@@ -109,9 +92,43 @@ body {
 
 .label {
     color: #000000;
+    margin-right: 10px;
 }
 
-.date-input, .info-input {
+.board-tools {
+    position: relative;
+    background-color: #ffffff;
+    padding: 10px 40px;
+    border-radius: 0.5rem;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+#generatePDF {
+    height: 35px;
+    object-fit: contain;
+    cursor: pointer;
+    display: block;
+}
+
+.board-tool-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #d1d5db;
+    border-bottom: 1px solid #d1d5db;
+    padding: 1rem 0;
+
+}
+
+.date-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.date-input {
+    width: 200px;
     border: 1px solid #d1d5db;
     border-radius: 0.5rem;
     padding: 0.5rem 0.75rem;
@@ -119,13 +136,19 @@ body {
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.date-input:focus, .info-input:focus {
+.date-input:focus {
     border-color: #3b82f6;
     box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
 }
 
-.calendar-icon {
-    color: #6b7280;
+.generate-pdf-button {
+    display: flex;           /* Add this */
+    align-items: center;     /* Add this */
+    justify-content: center; /* Add this */
+    min-width: 40px;        /* Adjust as needed */
+    border-radius: 0.5rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background-color: white;
 }
 
 .list-inline {
@@ -149,16 +172,6 @@ ul.list-inline li {
     padding: 10px 0;
     margin-bottom: 20px;
     border-radius: 10px;
-}
-
-.label {
-    margin-right: 10px;
-}
-
-.info-input {
-    flex: 1;
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
 }
 
 .section__content {
@@ -310,4 +323,94 @@ ul.list-inline li {
 
 .gap__container-image img {
     width: 90px;
+}
+
+/* Add at the beginning of your CSS to ensure proper mobile rendering */
+html, body {
+    overflow-x: auto;
+    min-width: 320px;  /* Minimum width to prevent excessive squishing */
+    margin: 0;
+    padding: 0;
+}
+
+/* Make the main container maintain minimum width */
+.section {
+    min-width: 1024px; /* Or whatever minimum width you want to maintain */
+}
+
+/* Adjust the tools section to be responsive while keeping board layout */
+@media screen and (max-width: 768px) {
+    .board-tools {
+        padding: 10px 20px;
+        width: 100%;
+        min-width: 1024px; /* Match section min-width */
+    }
+
+    .modal-content {
+        width: 90%;
+        margin: 10% auto;
+    }
+
+    /* Make the date and tools section stack but maintain width */
+    .board-tool-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .date-group {
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .boardInfoBtn {
+        top: 10px;   /* Adjust the vertical position for smaller screens */
+        right: 20px; /* Adjust the horizontal position for smaller screens */
+    }
+}
+
+/* Adjust font sizes for readability on smaller screens while maintaining layout */
+@media screen and (max-width: 480px) {
+    .container__text {
+        font-size: 16px;
+    }
+
+    .list-inline li {
+        font-size: 16px;
+    }
+}
+
+/* Make images slightly smaller on mobile while maintaining layout */
+@media screen and (max-width: 480px) {
+    .image__container img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .image__container_numbers img {
+        width: 25px;
+        height: 25px;
+    }
+
+}
+
+/* Optional: Add visual indication of scrolling */
+@media screen and (max-width: 768px) {
+    /* Add subtle shadow to indicate scrollable content */
+    .section::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 20px;
+        background: linear-gradient(to right, transparent, rgba(0,0,0,0.1));
+        pointer-events: none;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .boardInfoBtn {
+        right: calc(50% - 750px);  /* Center align with max-width content */
+    }
 }
